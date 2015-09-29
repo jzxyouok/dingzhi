@@ -1,0 +1,45 @@
+body {
+	background-color: #5C6BC0;
+}
+.m-content .info {
+	padding: 5px 20px 10px 20px;
+	color: #666;
+	background-color: #fff;
+	border-bottom: 1px solid #3949AB;
+}
+.m-content .info .main {
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.m-content .info table {
+	width: 100%;
+}
+.m-content .info table td {
+	padding: 3px 10px;
+}
+
+.m-content .control {
+	margin-top: 100px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.m-content .control a {
+	display: block;
+	width: 120px;
+	height: 35px;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 35px;
+}
+.m-content .cancel-btn {
+	float: left;
+	background-color: #D1D1D1;
+	color: #666;
+}
+.m-content .confirm-btn {
+	float: right;
+	background-color: #E84E40;
+	color: #fff;
+}

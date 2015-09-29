@@ -1,0 +1,190 @@
+body {
+	font-size: 13px;
+	color: #000;
+	margin: 0;
+	padding: 0;
+}
+* {
+	box-sizing: border-box;
+}
+*, *:HOVER, *:ACTIVE, *:FOCUS{
+	outline: none;
+}
+.btn:FOCUS,.btn:ACTIVE:FOCUS,.btn.active:FOCUS{
+	outline: none;
+}
+a, a:FOCUS, a:ACTIVE:FOCUS, a.active:FOCUS{
+	outline: none;
+}
+input[type="file"]:FOCUS,input[type="radio"]:FOCUS,input[type="checkbox"]:FOCUS {
+	outline: none;
+}
+.clear {
+	clear: both;
+}
+a {
+	text-decoration: none;
+}
+
+.g-container {
+	width: 100%;
+	overflow: hidden;
+}
+
+.m-head {
+	height: 50px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #FEFEFE;
+	background: linear-gradient(to top, #E3E3E5, #FEFEFE, #FEFEFE, #FEFEFE);
+	line-height: 50px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	transition: transform 0.5s;
+	-moz-transition: -moz-transform 0.5s;
+	-webkit-transition: -webkit-transform 0.5s;
+	z-index: 9;
+}
+.m-head-hide {
+	transform: translate(60%, 0);
+	-webkit-transform: translate(60%, 0);
+	-moz-transform: translate(60%, 0);
+}
+.m-head .u-left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 50px;
+}
+.m-head .menu-btn {
+	text-decoration: none;
+	color: #000;
+	margin-left: 10px;
+}
+.m-head .menu-btn i {
+	background-image: url("../img/menu-btn.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 20px;
+	height: 15px;
+	vertical-align: middle;
+}
+
+.m-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 60%;
+	background-color: #666;
+	border-right: 1px solid #BBB;
+	transition: transform 0.5s;
+	-moz-transition: -moz-transform 0.5s;
+	-webkit-transition: -webkit-transform 0.5s;
+	transform: translate(-100%, 0);
+	-webkit-transform: translate(-100%, 0);
+	-moz-transform: translate(-100%, 0);
+	z-index: 10;
+}
+.m-nav-show {
+	transform: translate(0, 0);
+	-webkit-transform: translate(0, 0);
+	-moz-transform: translate(0, 0);
+	box-shadow: 1px 0 10px 1px #ccc;
+}
+.m-nav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.m-nav ul li {
+	display: block;
+	height: 49px;
+	border-bottom: 1px solid #BBB;
+}
+.m-nav ul li a {
+	text-decoration: none;
+	padding-left: 20px;
+	line-height: 48px;
+	color: #FFF;
+	font-size: 14px;
+	display: block;
+	width: 100%;
+	height: 48px;
+}
+.m-nav ul li.nav-title {
+	margin-top: 50px;
+}
+.m-nav ul li.nav-title a {
+	color: #9C9C9C;
+}
+
+.m-content {
+	padding-top: 50px;
+	transition: transform 0.5s;
+	-moz-transition: -moz-transform 0.5s;
+	-webkit-transition: -webkit-transform 0.5s;
+}
+.m-content-hide {
+	transform: translate(60%, 0);
+	-webkit-transform: translate(60%, 0);
+	-moz-transform: translate(60%, 0);
+}
+
+
+
+.m-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	display: none;
+	z-index: 8;
+}
+.m-modal .bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: #000;
+	opacity: 0.7;
+}
+.m-modal .m-modal-content {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	color: #fff;
+	padding-top: 50px;
+	padding-left: 30px;
+	padding-right: 30px;
+	overflow-y: auto;
+}
+.m-modal .control {
+	margin-top: 50px;
+}
+.m-modal .cancel-btn {
+	width: 100px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: #D1D1D1;
+	color: #333;
+	float: left;
+	border-width: 0;
+}
+.m-modal .confirm-btn {
+	width: 100px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: #E84E40;
+	color: #fff;
+	float: right;
+	border-width: 0;
+}

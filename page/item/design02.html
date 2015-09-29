@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name ="viewport" content ="width=device-width, initial-scale=1.0, user-scalable=no">
+		<title>定制</title>
+		<link rel="stylesheet" href="../../assets/css/bootstrap.css">
+		<link rel="stylesheet" href="../../assets/css/global.css">
+		<link rel="stylesheet" href="../../assets/css/item/design.css">
+	</head>
+	<body>
+		<div class="g-container">
+			<div class="m-head">
+				<div class="u-left">
+					<a href="javascript:void(0);" class="menu-btn">
+						<i></i>
+					</a>
+				</div>
+				<span>服装定制</span>
+			</div>
+			<div class="m-nav">
+				<ul>
+					<li>
+						<a href="../../index.html">主页</a>
+					</li>
+					<li>
+						<a href="../item/fabric.html">定制衬衫</a>
+					</li>
+					<li class="nav-title">
+						<a href="javascript:void(0);">我的账户</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">会员登录</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">查看订单</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">我的账户</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">联系我们</a>
+					</li>
+				</ul>
+			</div>
+			<div class="m-content">
+				<div class="bartitle">
+					<div class="pull-left">
+						<span>选风格</span>
+						<span>3/3</span>
+					</div>
+					<div class="pull-right">
+						380元
+					</div>
+				</div>
+				<div class="design-info">
+					<img src="../../assets/img/dingzhi06.jpg">
+					<div class="design-select">
+						<ul>
+							<li>
+								<a href="javascript:void(0);">
+									<img src="../../assets/img/dingzhi12.jpg">
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);">
+									<img src="../../assets/img/dingzhi13.jpg">
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);">
+									<img src="../../assets/img/dingzhi14.jpg">
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);">
+									<img src="../../assets/img/dingzhi15.jpg">
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);">
+									<img src="../../assets/img/dingzhi16.jpg">
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="control">
+					<a href="./design.html" class="back-btn">返回</a>
+					<a href="#" class="next-btn">添加尺码</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- 弹窗 start-->
+		<div id="modal" class="m-modal">
+			<div class="bg"></div>
+			<div class="m-modal-content">
+				<div class="title">个性化选择</div>
+				<div>
+					<div class="col-xs-6">
+						<a href="javascript:void(0);">
+							<img src="../../assets/img/dingzhi04.jpg">
+						</a>
+					</div>
+					<div class="col-xs-6">
+						<a href="javascript:void(0);">
+							<img src="../../assets/img/dingzhi04.jpg">
+						</a>
+					</div>
+					<div class="col-xs-6">
+						<a href="javascript:void(0);">
+							<img src="../../assets/img/dingzhi04.jpg">
+						</a>
+					</div>
+					<div class="col-xs-6">
+						<a href="javascript:void(0);">
+							<img src="../../assets/img/dingzhi04.jpg">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 弹窗 end-->
+
+		<script src="../../assets/js/jquery-1.10.2.min.js"></script>
+		<script src="../../assets/js/bootstrap.js"></script>
+		<script src="../../assets/js/global.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				//弹窗
+				$(".design-select li a").click(function(){
+					$("#modal").show();
+				});
+
+				//关闭弹窗
+				$("#modal .m-modal-content").click(function(e){
+					$("#modal").hide();
+				});
+				//弹窗里的元素点击事件
+				$("#modal .m-modal-content a").click(function(e){
+					e.stopPropagation();
+					$("#modal").hide();
+				});
+			});
+		</script>
+	</body>
+</html>
