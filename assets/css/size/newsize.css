@@ -1,0 +1,43 @@
+.m-content .top-control {
+	padding: 20px;
+}
+.m-content .top-control .backlist-btn {
+	border-radius: 7px;
+	background-color: #2BAF2B;
+}
+
+.m-content form {
+	padding: 20px 20px 0;
+}
+.m-content h5 {
+	font-weight: bold;
+	margin: 0 0 20px;
+}
+.m-content input {
+	width: 150px;
+	display: inline-block;
+	height: 30px;
+	border-radius: 7px;
+	margin-left: 15px;
+	margin-right: 7px;
+}
+.m-content select {
+	width: 70px;
+	display: inline-block;
+	height: 30px;
+	border-radius: 7px;
+	margin-left: 15px;
+	margin-right: 7px;
+}
+
+.m-content .bottom-control{
+	padding: 20px;
+}
+.m-content .bottom-control .addsize-btn {
+	border-radius: 7px;
+}
+.m-content .bottom-control .back-btn {
+	border-radius: 7px;
+	background-color: #8C8C8C;
+	margin-top: 15px;
+}

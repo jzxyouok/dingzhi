@@ -1,0 +1,99 @@
+.confirm-info {
+	font-size: 12px;
+	padding: 0 20px 70px;
+}
+
+.address {
+	padding-bottom: 30px;
+}
+.address .select {
+	height: 60px;
+	line-height: 60px;
+	font-weight: bold;
+	font-size: 13px;
+}
+.address .select .btn {
+	background-color: #CFCFCF;
+	border-radius: 7px;
+	font-size: 12px;
+}
+.address .detail .location {
+	padding-bottom: 10px;
+}
+.address .detail .userinfo > span:first-child {
+	padding-right: 10px;
+}
+
+.item {
+	border-bottom: 1px solid #ccc;
+}
+.item table {
+	width: 100%;
+}
+.item table td {
+	padding: 3px 10px;
+}
+.item table tr td:nth-child(1) {
+	text-align: left;
+}
+.item table tr td:nth-child(2) {
+	text-align: center;
+}
+.item table tr td:nth-child(3) {
+	text-align: right;
+}
+.item thead td {
+	background-color: #E0E0E0;
+}
+.item tbody td {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.payment {
+	line-height: 25px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+.payment .postfee {
+	height: 25px;
+}
+.payment  .total-payment{
+	height: 25px;
+	font-weight: bold;
+}
+
+.arrival {
+	font-weight: bold;
+	line-height: 30px;
+}
+
+.invoice {
+	padding-top: 10px;
+}
+.invoice label {
+	font-weight: normal;
+}
+.invoice label input {
+	vertical-align: middle;
+	margin: 0;
+}
+.invoice .invoice-input {
+	padding-left: 16px;
+}
+.invoice .invoice-input .form-control {
+	border-radius: 7px;
+	width: 90%;
+}
+
+.pay-btn {
+	border-radius: 0;
+	border-width: 0;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 40px;
+	line-height: 40px;
+	padding: 0;
+}

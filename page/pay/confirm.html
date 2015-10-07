@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name ="viewport" content ="width=device-width, initial-scale=1.0, user-scalable=no">
+		<title>订单确认支付</title>
+		<link rel="stylesheet" href="../../assets/css/bootstrap.css">
+		<link rel="stylesheet" href="../../assets/css/global.css">
+		<link rel="stylesheet" href="../../assets/css/pay/confirm.css">
+	</head>
+	<body>
+		<div class="g-container">
+			<div class="m-head">
+				<div class="u-left">
+					<a href="javascript:void(0);" class="menu-btn">
+						<i></i>
+					</a>
+				</div>
+				<span>订单确认支付</span>
+			</div>
+			<div class="m-nav">
+				<ul>
+					<li>
+						<a href="../../index.html">主页</a>
+					</li>
+					<li>
+						<a href="../item/fabric.html">定制衬衫</a>
+					</li>
+					<li class="nav-title">
+						<a href="javascript:void(0);">我的账户</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">会员登录</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">查看订单</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">我的账户</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">联系我们</a>
+					</li>
+				</ul>
+			</div>
+			<div class="m-content">
+				<div class="confirm-info">
+					<div class="address">
+						<div class="select">
+							<div class="pull-left">送货地址</div>
+							<div class="pull-right">
+								<a href="../address/addresslist.html" class="btn btn-default select-addr-btn">选择已有收货地址</a>
+							</div>
+						</div>
+						<div class="detail">
+							<div class="location">广东省广州市越秀区水萌路115号天益大厦二层</div>
+							<div class="userinfo">
+								<span>陆毅</span>
+								<span>15012345678</span>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<table>
+							<thead>
+								<tr>
+									<td>商品</td>
+									<td>数量</td>
+									<td>价格</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>定制衬衫</td>
+									<td>1</td>
+									<td>380元</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="payment">
+						<div class="postfee">
+							<div class="pull-left">运费</div>
+							<div class="pull-right">免费</div>
+						</div>
+						<div class="total-payment">
+							<div class="pull-left">总价</div>
+							<div class="pull-right">380元</div>
+						</div>
+					</div>
+					<div class="arrival">
+						预计到达时间：8月20号
+					</div>
+					<div class="invoice">
+						<label>
+							<input type="checkbox" checked="checked">
+							是否需要发票
+						</label>
+						<div class="invoice-input">
+							<input type="text" class="form-control" placeholder="发票抬头">
+						</div>
+					</div>
+				</div>
+
+				<a href="./pay.html" class="btn btn-success btn-block pay-btn">继续支付</a>
+			</div>
+		</div>
+
+		<script src="../../assets/js/jquery-1.10.2.min.js"></script>
+		<script src="../../assets/js/bootstrap.js"></script>
+		<script src="../../assets/js/global.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".invoice label input").change(function(){
+					if($(this).is(":checked")){
+						$(this).closest(".invoice").find(".invoice-input").show();
+					}else{
+						$(this).closest(".invoice").find(".invoice-input").hide();
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

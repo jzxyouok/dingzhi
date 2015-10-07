@@ -45,6 +45,71 @@
 	color: #3F3F3F;
 }
 
+
+.m-fabric-detail {
+	position: fixed;
+	top: 50px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #5C6BC0;
+	transition: transform 0.4s;
+	-moz-transition: -moz-transform 0.4s;
+	-webkit-transition: -webkit-transform 0.4s;
+	transform: translate(100%, 0);
+	-webkit-transform: translate(100%, 0);
+	-moz-transform: translate(100%, 0);
+}
+.m-fabric-detail.show {
+	transform: translate(0, 0);
+	-webkit-transform: translate(0, 0);
+	-moz-transform: translate(0, 0);
+}
+.m-fabric-detail .info {
+	padding: 5px 20px 10px 20px;
+	color: #666;
+	background-color: #fff;
+	border-bottom: 1px solid #3949AB;
+}
+.m-fabric-detail .info .main {
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.m-fabric-detail .info table {
+	width: 100%;
+}
+.m-fabric-detail .info table td {
+	padding: 3px 10px;
+}
+
+.m-fabric-detail .control {
+	padding-top: 100px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.m-fabric-detail .control a {
+	display: block;
+	width: 120px;
+	height: 35px;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 35px;
+	text-decoration: none;
+}
+.m-fabric-detail .cancel-btn {
+	float: left;
+	background-color: #D1D1D1;
+	color: #666;
+}
+.m-fabric-detail .confirm-btn {
+	float: right;
+	background-color: #E84E40;
+	color: #fff;
+}
+
+
 .m-modal .m-modal-content {
 	padding-top: 70px;
 	font-size: 14px;

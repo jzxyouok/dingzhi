@@ -46,105 +46,204 @@
 				</ul>
 			</div>
 			<div class="m-content">
-				<div class="bartitle">
-					<div class="pull-left">
-						<span>选风格</span>
-						<span>2/3</span>
+				<form class="main-form">
+					<input type="hidden" name="neckline"><!-- 领口 -->
+					<input type="hidden" name="sleeve"><!-- 袖子 -->
+					<input type="hidden" name="type"><!-- 版型 -->
+					<input type="hidden" name="pocket"><!-- 口袋 -->
+					<input type="hidden" name="placket"><!-- 门襟 -->
+					<input type="hidden" name="lap"><!-- 下摆 -->
+					<input type="hidden" name="neckline_color"><!-- 领口颜色 -->
+					<input type="hidden" name="sign_text"><!-- 个性签名-文字 -->
+					<input type="hidden" name="sign_family"><!-- 个性签名-字体 -->
+					<input type="hidden" name="sign_color"><!-- 个性签名-颜色 -->
+					<input type="hidden" name="sign_location"><!-- 个性签名-位置 -->
+				</form>
+				<div class="design-container">
+					
+					<!-- 第二步 start -->
+					<div class="step step-two">
+						<div class="bartitle">
+							<div class="pull-left">
+								<span>选风格</span>
+								<span>2/3</span>
+							</div>
+							<div class="pull-right">
+								380元
+							</div>
+						</div>
+						<div class="design-info">
+							<div class="design-select">
+								<ul>
+									<li>
+										<a href="javascript:void(0);" data-target="neckline">
+											<img src="../../assets/img/design/dingzhi09.jpg">
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" data-target="sleeve">
+											<img src="../../assets/img/design/dingzhi07.jpg">
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" data-target="type">
+											<img src="../../assets/img/design/dingzhi08.jpg">
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" data-target="pocket">
+											<img src="../../assets/img/design/dingzhi11.jpg">
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" data-target="placket">
+											<img src="../../assets/img/design/dingzhi10.jpg">
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="pic">
+								<img src="../../assets/img/dingzhi06.jpg">
+							</div>
+						</div>
+						<div class="control">
+							<a href="./fabric.html" class="back-btn">返回</a>
+							<a href="javascript:void(0);" class="next-btn js-next">下一步</a>
+						</div>
 					</div>
-					<div class="pull-right">
-						380元
+					<!-- 第二步 end -->
+
+					<!-- 第三步 start -->
+					<div class="step step-three">
+						<div class="bartitle">
+							<div class="pull-left">
+								<span>选风格</span>
+								<span>3/3</span>
+							</div>
+							<div class="pull-right">
+								380元
+							</div>
+						</div>
+						<div class="design-info">
+							<div class="design-select">
+								<ul>
+									<li>
+										<a href="javascript:void(0);" data-target="lap">
+											<img src="../../assets/img/design/dingzhi15.jpg">
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" data-target="neckline_color">
+											<img src="../../assets/img/design/dingzhi12.jpg">
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" data-target="sign" class="custom-signature">
+											<img src="../../assets/img/design/dingzhi16.jpg">
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="pic">
+								<img src="../../assets/img/dingzhi06.jpg">
+							</div>
+						</div>
+						<div class="control">
+							<a href="javascript:void(0);" class="back-btn js-previous">返回</a>
+							<a href="#" class="next-btn js-confirm">添加尺码</a>
+						</div>
+					</div>
+					<!-- 第三步 end -->
+
+				</div>
+
+				<!-- 弹窗 start-->
+				<div id="modal" class="m-modal">
+					<div class="bg"></div>
+					<div class="m-modal-content">
+						
 					</div>
 				</div>
-				<div class="design-info">
-					<img src="../../assets/img/dingzhi06.jpg">
-					<div class="design-select">
-						<ul>
-							<li>
-								<a href="javascript:void(0);">
-									<img src="../../assets/img/dingzhi07.jpg">
-								</a>
-							</li>
-							<li>
-								<a href="javascript:void(0);">
-									<img src="../../assets/img/dingzhi08.jpg">
-								</a>
-							</li>
-							<li>
-								<a href="javascript:void(0);">
-									<img src="../../assets/img/dingzhi09.jpg">
-								</a>
-							</li>
-							<li>
-								<a href="javascript:void(0);">
-									<img src="../../assets/img/dingzhi10.jpg">
-								</a>
-							</li>
-							<li>
-								<a href="javascript:void(0);">
-									<img src="../../assets/img/dingzhi11.jpg">
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="control">
-					<a href="./fabric.html" class="back-btn">返回</a>
-					<a href="./design02.html" class="next-btn">下一步</a>
-				</div>
+				<!-- 弹窗 end-->
+
 			</div>
 		</div>
 
-		<!-- 弹窗 start-->
-		<div id="modal" class="m-modal">
-			<div class="bg"></div>
-			<div class="m-modal-content">
-				<div class="title">个性化选择</div>
+		<!-- 普通弹窗内容 -->
+		<script type="text/html" id="normal-modal-tpl">
+			<div class="title">个性化选择</div>
+			<div class="select-option">
+				{{each options as option}}
+					<div class="col-xs-6">
+						<a href="javascript:void(0);" class="design-option" data-optionid="{{option.id}}" data-target={{target}}>
+							<img src="{{option.img}}">
+						</a>
+						<div class="text">{{option.text}}</div>
+					</div>
+				{{/each}}
+			</div>
+		</script>
+
+		<!-- 个性签名弹窗内容 -->
+		<script type="text/html" id="custom-modal-tpl">
+			<div class="text-field">
+				<h5>输入刺绣内容<span>（+36元）</span></h5>
+				<input type="text" class="form-control" placeholder="请输入刺绣内容" value="{{selectData.text}}">
+			</div>
+			<div class="clear"></div>
+			<div class="font-family-field">
+				<h5>字体</h5>
 				<div>
-					<div class="col-xs-6">
-						<a href="javascript:void(0);">
-							<img src="../../assets/img/dingzhi04.jpg">
-						</a>
-					</div>
-					<div class="col-xs-6">
-						<a href="javascript:void(0);">
-							<img src="../../assets/img/dingzhi04.jpg">
-						</a>
-					</div>
-					<div class="col-xs-6">
-						<a href="javascript:void(0);">
-							<img src="../../assets/img/dingzhi04.jpg">
-						</a>
-					</div>
-					<div class="col-xs-6">
-						<a href="javascript:void(0);">
-							<img src="../../assets/img/dingzhi04.jpg">
-						</a>
-					</div>
+					{{each sign_family as family}}
+						<div class="col-xs-6">
+							<label>
+								<input type="radio" name="custom_sign_family" value="{{family.val}}" {{if selectData.family==family.val}}checked{{/if}}>
+								<img src="{{family.img}}">
+							</label>
+						</div>
+					{{/each}}
 				</div>
 			</div>
-		</div>
-		<!-- 弹窗 end-->
+			<div class="clear"></div>
+			<div class="color-field">
+				<h5>选择刺绣字母颜色</h5>
+				<div>
+					{{each sign_color as color}}
+						<div class="col-xs-2">
+							<a href="javascript:void(0);" data-val="{{color.val}}" {{if selectData.color==color.val}}class="select"{{/if}}>
+								<img src="{{color.img}}">
+							</a>
+						</div>
+					{{/each}}
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="location-field">
+				<h5>刺绣位置</h5>
+				<ul>
+					{{each sign_location as location}}
+						<li>
+							<label>
+								<input type="radio" name="custom_sign_location" value="{{location.val}}" {{if selectData.location==location.val}}checked{{/if}}>
+								{{location.text}}
+							</label>
+						</li>
+					{{/each}}
+				</ul>
+			</div>
+			<div class="clear"></div>
+			<div class="confirm-box">
+				<a href="javascript:void(0);" class="btn btn-danger btn-block">确定<a>
+			</div>
+		</script>
 
 		<script src="../../assets/js/jquery-1.10.2.min.js"></script>
 		<script src="../../assets/js/bootstrap.js"></script>
+		<script src="../../assets/js/arttemplate.js"></script>
 		<script src="../../assets/js/global.js"></script>
+		<script src="../../assets/js/item/design.js"></script>
 		<script type="text/javascript">
-			$(function(){
-				//弹窗
-				$(".design-select li a").click(function(){
-					$("#modal").show();
-				});
-
-				//关闭弹窗
-				$("#modal .m-modal-content").click(function(e){
-					$("#modal").hide();
-				});
-				//弹窗里的元素点击事件
-				$("#modal .m-modal-content a").click(function(e){
-					e.stopPropagation();
-					$("#modal").hide();
-				});
-			});
+			
 		</script>
 	</body>
 </html>

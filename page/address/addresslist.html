@@ -5,10 +5,10 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name ="viewport" content ="width=device-width, initial-scale=1.0, user-scalable=no">
-		<title>商品详情</title>
+		<title>收货地址</title>
 		<link rel="stylesheet" href="../../assets/css/bootstrap.css">
 		<link rel="stylesheet" href="../../assets/css/global.css">
-		<link rel="stylesheet" href="../../assets/css/item/itemdetail.css">
+		<link rel="stylesheet" href="../../assets/css/address/addresslist.css">
 	</head>
 	<body>
 		<div class="g-container">
@@ -18,7 +18,7 @@
 						<i></i>
 					</a>
 				</div>
-				<span>服装定制</span>
+				<span>收货地址管理</span>
 			</div>
 			<div class="m-nav">
 				<ul>
@@ -46,29 +46,53 @@
 				</ul>
 			</div>
 			<div class="m-content">
-				<div class="item-pic">
-					<img src="../../assets/img/dingzhi01.jpg">
+				<div class="list">
+					<ul>
+						<li>
+							<div class="info-box">
+								<div class="addr">广东省广州市越秀区水萌路115号天益大厦二层</div>
+								<div class="userinfo">
+									<span>陆毅</span>
+									<span>15012345678</span>
+								</div>
+							</div>
+							<div class="control-box">
+								<a href="javascript:void(0);">
+									<span class="glyphicon glyphicon-remove-sign"></span>
+								</a>
+							</div>
+						</li>
+						<li>
+							<div class="info-box">
+								<div class="addr">广东省广州市越秀区水萌路115号天益大厦二层</div>
+								<div class="userinfo">
+									<span>陆毅</span>
+									<span>15012345678</span>
+								</div>
+							</div>
+							<div class="control-box">
+								<a href="javascript:void(0);">
+									<span class="glyphicon glyphicon-remove-sign"></span>
+								</a>
+							</div>
+						</li>
+					</ul>
 				</div>
-				<div class="item-title">时尚免烫 尖领扣2.0 浅蓝维希格</div>
-				<div class="item-price">价格：230元</div>
-				<div class="item-info">
-					<h2>商品详情：</h2>
-					<div class="main-pic">
-						<!-- 这里放商品详情介绍图 -->
-					</div>
+				<div class="bottom-box">
+					<a href="./addaddress.html" class="btn btn-danger btn-block">添加收货地址</a>
 				</div>
-
-				<a href="../pay/shoppingcar.html" class="buy-btn">立刻购买</a>
 			</div>
 		</div>
-		
 
 		<script src="../../assets/js/jquery-1.10.2.min.js"></script>
 		<script src="../../assets/js/bootstrap.js"></script>
 		<script src="../../assets/js/global.js"></script>
 		<script type="text/javascript">
 			$(function(){
-				
+				//删除
+				$(".list .control-box a").click(function(){
+					$(this).closest("li").remove();
+				});
 			});
 		</script>
 	</body>

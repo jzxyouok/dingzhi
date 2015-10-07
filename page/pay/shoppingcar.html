@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name ="viewport" content ="width=device-width, initial-scale=1.0, user-scalable=no">
+		<title>购物车</title>
+		<link rel="stylesheet" href="../../assets/css/bootstrap.css">
+		<link rel="stylesheet" href="../../assets/css/global.css">
+		<link rel="stylesheet" href="../../assets/css/pay/shoppingcar.css">
+	</head>
+	<body>
+		<div class="g-container">
+			<div class="m-head">
+				<div class="u-left">
+					<a href="javascript:void(0);" class="menu-btn">
+						<i></i>
+					</a>
+				</div>
+				<span>购物车</span>
+			</div>
+			<div class="m-nav">
+				<ul>
+					<li>
+						<a href="../../index.html">主页</a>
+					</li>
+					<li>
+						<a href="../item/fabric.html">定制衬衫</a>
+					</li>
+					<li class="nav-title">
+						<a href="javascript:void(0);">我的账户</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">会员登录</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">查看订单</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">我的账户</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">联系我们</a>
+					</li>
+				</ul>
+			</div>
+			<div class="m-content">
+				<div class="list">
+					<div class="one-item-info">
+						<div class="box-row">
+							<div class="pic">
+								<img src="../../assets/img/dingzhi17.jpg">
+							</div>
+							<div class="amount">
+								<div>定制衬衫</div>
+								<div class="amount-control">
+									<a href="javascript:void(0);" class="minus-btn">
+										<span class="glyphicon glyphicon-minus"></span>
+									</a>
+									<span class="amount-val">2</span>
+									<a href="javascript:void(0);" class="plus-btn">
+										<span class="glyphicon glyphicon-plus"></span>
+									</a>
+								</div>
+							</div>
+							<div class="price">单件：380元</div>
+						</div>
+						<div class="control-row">
+							<a href="javascript:void(0);">
+								<span class="glyphicon glyphicon-edit"></span>
+								<span>修改</span>
+							</a>
+							<a href="javascript:void(0);">
+								<span class="glyphicon glyphicon-remove-sign"></span>
+								<span>删除</span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="payment-container">
+					<div class="postfee">
+						<div class="pull-left">邮费</div>
+						<div class="pull-right">免费</div>
+					</div>
+					<div class="total-payment">
+						<div class="pull-left">费用总额</div>
+						<div class="pull-right">760元</div>
+					</div>
+				</div>
+				<div class="bottom-control">
+					<div class="pull-left">
+						<a class="back-btn btn btn-success btn-block" href="../../index.html">继续购买</a>
+					</div>
+					<div class="pull-right">
+						<a class="pay-btn btn btn-danger btn-block" href="./confirm.html">结算</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../assets/js/jquery-1.10.2.min.js"></script>
+		<script src="../../assets/js/bootstrap.js"></script>
+		<script src="../../assets/js/global.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".minus-btn").click(function(){
+					var $target = $(".amount-val");
+					var val = $target.text();
+					if(!val){
+						val = 0;
+					}
+					val --;
+					$target.text(val);
+				});
+				$(".plus-btn").click(function(){
+					var $target = $(".amount-val");
+					var val = $target.text();
+					if(!val){
+						val = 0;
+					}
+					val ++;
+					$target.text(val);
+				});
+			});
+		</script>
+	</body>
+</html>

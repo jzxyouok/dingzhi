@@ -1,0 +1,10 @@
+.m-content .map img {
+	width: 100%;
+}
+.m-content .info {
+	padding: 30px 20px;
+}
+.m-content .info p {
+	margin-bottom: 5px;
+	color: #333;
+}

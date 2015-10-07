@@ -5,10 +5,10 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name ="viewport" content ="width=device-width, initial-scale=1.0, user-scalable=no">
-		<title>商品详情</title>
+		<title>新用户尺码</title>
 		<link rel="stylesheet" href="../../assets/css/bootstrap.css">
 		<link rel="stylesheet" href="../../assets/css/global.css">
-		<link rel="stylesheet" href="../../assets/css/item/itemdetail.css">
+		<link rel="stylesheet" href="../../assets/css/size/newsize.css">
 	</head>
 	<body>
 		<div class="g-container">
@@ -18,7 +18,7 @@
 						<i></i>
 					</a>
 				</div>
-				<span>服装定制</span>
+				<span>新用户尺码</span>
 			</div>
 			<div class="m-nav">
 				<ul>
@@ -46,29 +46,49 @@
 				</ul>
 			</div>
 			<div class="m-content">
-				<div class="item-pic">
-					<img src="../../assets/img/dingzhi01.jpg">
+				<div class="top-control">
+					<a href="./sizelist.html" class="btn btn-success btn-block backlist-btn">选择原有客户</a>
 				</div>
-				<div class="item-title">时尚免烫 尖领扣2.0 浅蓝维希格</div>
-				<div class="item-price">价格：230元</div>
-				<div class="item-info">
-					<h2>商品详情：</h2>
-					<div class="main-pic">
-						<!-- 这里放商品详情介绍图 -->
+				<form>
+					<h5>新用户尺码</h5>
+					<div class="form-group">
+						姓名
+						<input type="text" class="form-control" placeholder="姓名">
 					</div>
+					<div class="form-group">
+						身高
+						<select class="form-control">
+							<option>160</option>
+							<option>170</option>
+							<option>180</option>
+							<option>190</option>
+						</select>
+						CM
+					</div>
+					<div class="form-group">
+						体重
+						<select class="form-control">
+							<option>50</option>
+							<option>60</option>
+							<option>70</option>
+							<option>80</option>
+						</select>
+						KG
+					</div>
+				</form>
+				<div class="bottom-control">
+					<a href="./addsize.html" class="btn btn-danger btn-block addsize-btn">添加尺寸</a>
+					<a href="./sizelist.html" class="btn btn-default btn-block back-btn">返回</a>
 				</div>
-
-				<a href="../pay/shoppingcar.html" class="buy-btn">立刻购买</a>
 			</div>
 		</div>
-		
 
 		<script src="../../assets/js/jquery-1.10.2.min.js"></script>
 		<script src="../../assets/js/bootstrap.js"></script>
 		<script src="../../assets/js/global.js"></script>
 		<script type="text/javascript">
 			$(function(){
-				
+
 			});
 		</script>
 	</body>

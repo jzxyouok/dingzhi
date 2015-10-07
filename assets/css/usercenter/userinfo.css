@@ -1,0 +1,10 @@
+.m-content form {
+	padding: 20px;
+}
+.m-content form input {
+	border-radius: 7px;
+}
+.m-content form .btn {
+	margin-top: 50;
+	border-radius: 7px;
+}

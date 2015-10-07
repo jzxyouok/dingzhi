@@ -1,0 +1,52 @@
+.m-content .list {
+	padding: 15px;
+}
+.m-content .list ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.m-content .list li {
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+	width: 100%;
+	background-color: #F2F2F2;
+	border: 1px solid #BDBDBD;
+	border-radius: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	line-height: 20px;
+	margin-bottom: 10px;
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	box-align: center;
+}
+.m-content .list .info-box {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	box-flex: 1;
+	padding-left: 10px;
+	padding-right: 5px;
+}
+.m-content .list .info-box .addr {
+	padding-bottom: 10px;
+}
+.m-content .list .info-box .userinfo > span:first-child {
+	padding-right: 10px;
+}
+
+.m-content .list .control-box {
+	width: 20px;
+}
+.m-content .list .control-box a {
+	text-decoration: none;
+	color: #A4A4A4;
+}
+
+.m-content .bottom-box {
+	padding: 0 15px;
+}
+.m-content .bottom-box .btn {
+	border-radius: 7px;
+}

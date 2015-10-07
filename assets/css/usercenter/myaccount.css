@@ -1,0 +1,24 @@
+.m-content h5 {
+	margin: 0;
+	padding: 20px;
+	font-weight: bold;
+}
+.m-content ul {
+	margin: 0;
+	padding: 0 20px;
+	list-style: none;
+}
+.m-content li {
+	display: block;
+	border: 1px solid #ccc;
+	border-radius: 7px;
+	margin-bottom: 10px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+}
+.m-content li a {
+	text-decoration: none;
+	color: #666;
+	display: block;
+}

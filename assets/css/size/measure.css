@@ -1,0 +1,30 @@
+.m-content .bartitle {
+	padding: 0 20px;
+	height: 40px;
+	background-color: #F2F2F2;
+	line-height: 40px;
+	font-weight: bold;
+}
+.m-content .bartitle > div {
+	height: 40px;
+}
+.m-content .illustrate img {
+	width: 100%;
+}
+.m-content .directions {
+	padding: 25px 15px 50px;
+}
+.m-content .back-btn {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 40px;
+	background-color: #2BAF2B;
+	color: #fff;
+	padding: 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 0;
+	border-width: 0;
+}

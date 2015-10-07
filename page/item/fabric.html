@@ -61,7 +61,13 @@
 					</div>
 					<div class="fabric-list">
 						<div class="fabric col-xs-6">
-							<a href="./fabricconfirm.html">
+							<a href="javascript:void(0);" 
+							data-name="MayField" 
+							data-price="360元" 
+							data-material="100%棉" 
+							data-size="100gr/m" 
+							data-season="夏天"
+							data-grain="纯色的">
 								<img src="../../assets/img/dingzhi03.jpg">
 								<div class="infobg"></div>
 								<div class="info">
@@ -78,24 +84,30 @@
 							</a>
 						</div>
 						<div class="fabric col-xs-6">
-							<a href="./fabricconfirm.html">
+							<a href="javascript:void(0);" 
+							data-name="MayField02" 
+							data-price="380元" 
+							data-material="100%棉" 
+							data-size="100gr/m" 
+							data-season="冬天"
+							data-grain="纯色的">
 								<img src="../../assets/img/dingzhi04.jpg">
 								<div class="infobg"></div>
 								<div class="info">
-									<div>MayField</div>
+									<div>MayField02</div>
 									<div>
 										<div class="pull-left">
 											棉
 										</div>
 										<div class="pull-right">
-											360元
+											380元
 										</div>
 									</div>
 								</div>
 							</a>
 						</div>
 						<div class="fabric col-xs-6">
-							<a href="./fabricconfirm.html">
+							<a href="javascript:void(0);">
 								<img src="../../assets/img/dingzhi05.jpg">
 								<div class="infobg"></div>
 								<div class="info">
@@ -112,7 +124,7 @@
 							</a>
 						</div>
 						<div class="fabric col-xs-6">
-							<a href="./fabricconfirm.html">
+							<a href="javascript:void(0);">
 								<img src="../../assets/img/dingzhi03.jpg">
 								<div class="infobg"></div>
 								<div class="info">
@@ -129,7 +141,7 @@
 							</a>
 						</div>
 						<div class="fabric col-xs-6">
-							<a href="#">
+							<a href="javascript:void(0);">
 								<img src="../../assets/img/dingzhi03.jpg">
 								<div class="infobg"></div>
 								<div class="info">
@@ -146,7 +158,7 @@
 							</a>
 						</div>
 						<div class="fabric col-xs-6">
-							<a href="#">
+							<a href="javascript:void(0);">
 								<img src="../../assets/img/dingzhi04.jpg">
 								<div class="infobg"></div>
 								<div class="info">
@@ -167,6 +179,39 @@
 			</div>
 		</div>
 
+		<!-- detail start -->
+		<div class="m-fabric-detail">
+			<div class="info">
+				<div class="main">
+					<div class="pull-left auto-field" data-source="name">
+					</div>
+					<div class="pull-right auto-field" data-source="price">
+					</div>
+				</div>
+				<table>
+					<tr>
+						<td class="auto-field" data-source="material"></td>
+						<td class="auto-field" data-source="size"></td>
+					</tr>
+					<tr>
+						<td>
+							<span>季节：</span>
+							<span class="auto-field" data-source="season"><span>
+						</td>
+						<td>
+							<span>纹理：</span>
+							<span class="auto-field" data-source="grain"><span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="control">
+				<a href="javascript:void(0);" class="cancel-btn">取消</a>
+				<a href="./design.html" class="confirm-btn">确定</a>
+			</div>
+		</div>
+		<!-- detail end -->
+
 		<!-- 弹窗 start-->
 		<div id="modal" class="m-modal">
 			<div class="bg"></div>
@@ -176,19 +221,19 @@
 					<ul>
 						<li>
 							<label>
-								<input type="checkbox">
+								<input type="radio" name="style">
 								<span>商务经典系列</span>
 							</label>
 						</li>
 						<li>
 							<label>
-								<input type="checkbox">
+								<input type="radio" name="style">
 								<span>商务休闲系列</span>
 							</label>
 						</li>
 						<li>
 							<label>
-								<input type="checkbox">
+								<input type="radio" name="style">
 								<span>彩色扣时尚系</span>
 							</label>
 						</li>
@@ -212,6 +257,28 @@
 					//绑定弹窗的确定按钮事件
 					alert("选定确定！！");
 					$("#modal").hide();
+				});
+
+				//跳转详情页
+				$(".m-fabric .fabric > a").click(function(){
+					var $source = $(this);
+					$(".m-fabric-detail .auto-field").each(function(){
+						var name = $(this).data("source");
+						var value = $source.data(name);
+						if(!value){
+							value = "";
+						}
+						$(this).text(value);
+					});
+
+					$(".m-fabric-detail").addClass("show");
+				});
+				//返回
+				$(".m-fabric-detail .cancel-btn").click(function(){
+					$(".m-fabric-detail").removeClass("show");
+				});
+				$(".m-fabric-detail").click(function(){
+					$(".m-head").click();
 				});
 			});
 		</script>
