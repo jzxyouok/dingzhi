@@ -1,47 +1,35 @@
 body {
-	overflow-x: hidden;
+	
+}
+.m-content {
+	width: 100%;
 }
 .m-content .main-form {
 	display: none;
 }
 .m-content .design-container {
-
+	width: 200%;
+	transition: transform 0.4s;
+	-webkit-transition: -webkit-transform 0.4s;
+	-moz-transition: -moz-transform 0.4s;
+	background-color: #fff;
+}
+.m-content .design-container.row {
+	margin-left: 0;
+	margin-right: 0;
 }
 .m-content .step {
-	/*
-	position: absolute;
-	top: 50px;
-	left: 0;
-	right: 0;
-	transition: transform 0.4s;
-	-moz-transition: -moz-transform 0.4s;
-	-webkit-transition: -webkit-transform 0.4s;
-	*/
+	width: 50%;
+	float: left;
+	background-color: #fff;
 }
-.m-content .step-three {
-	/*
-	transform: translate(100%, 0);
-	-webkit-transform: translate(100%, 0);
-	-moz-transform: translate(100%, 0);
-	*/
-	display: none;
+.m-content .design-container.last-step {
+	transform: translate(-50%, 0);
+	-webkit-transform: translate(-50%, 0);
+	-moz-transform: translate(-50%, 0);
 }
-.m-content .last-step .step-two {
-	/*
-	transform: translate(-100%, 0);
-	-webkit-transform: translate(-100%, 0);
-	-moz-transform: translate(-100%, 0);
-	*/
-	display: none;
-}
-.m-content .last-step .step-three {
-	/*
-	transform: translate(0, 0);
-	-webkit-transform: translate(0, 0);
-	-moz-transform: translate(0, 0);
-	*/
-	display: block;
-}
+
+
 
 .m-content .bartitle {
 	height: 40px;
