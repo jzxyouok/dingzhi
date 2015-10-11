@@ -80,6 +80,7 @@
 }
 .invoice .invoice-input {
 	padding-left: 16px;
+	display: none;
 }
 .invoice .invoice-input .form-control {
 	border-radius: 7px;

@@ -52,7 +52,9 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #5C6BC0;
+	background-color: #fff;
+	background-repeat: no-repeat;
+	background-size: cover;
 	transition: transform 0.4s;
 	-moz-transition: -moz-transform 0.4s;
 	-webkit-transition: -webkit-transform 0.4s;
@@ -65,11 +67,14 @@
 	-webkit-transform: translate(0, 0);
 	-moz-transform: translate(0, 0);
 }
+.m-fabric-detail .detail-form {
+	display: none;
+}
 .m-fabric-detail .info {
 	padding: 5px 20px 10px 20px;
 	color: #666;
 	background-color: #fff;
-	border-bottom: 1px solid #3949AB;
+	border-bottom: 1px solid #ccc;
 }
 .m-fabric-detail .info .main {
 	height: 50px;

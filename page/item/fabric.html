@@ -67,7 +67,9 @@
 							data-material="100%棉" 
 							data-size="100gr/m" 
 							data-season="夏天"
-							data-grain="纯色的">
+							data-grain="纯色的"
+							data-id="01"
+							data-bgurl="../../assets/img/dingzhi03.jpg">
 								<img src="../../assets/img/dingzhi03.jpg">
 								<div class="infobg"></div>
 								<div class="info">
@@ -90,7 +92,9 @@
 							data-material="100%棉" 
 							data-size="100gr/m" 
 							data-season="冬天"
-							data-grain="纯色的">
+							data-grain="纯色的"
+							data-id="02"
+							data-bgurl="../../assets/img/dingzhi04.jpg">
 								<img src="../../assets/img/dingzhi04.jpg">
 								<div class="infobg"></div>
 								<div class="info">
@@ -181,6 +185,16 @@
 
 		<!-- detail start -->
 		<div class="m-fabric-detail">
+			<form class="detail-form">
+					<input type="hidden" name="name">
+					<input type="hidden" name="price">
+					<input type="hidden" name="material">
+					<input type="hidden" name="size">
+					<input type="hidden" name="season">
+					<input type="hidden" name="grain">
+					<input type="hidden" name="id">
+					<input type="hidden" name="bgurl">
+			</form>
 			<div class="info">
 				<div class="main">
 					<div class="pull-left auto-field" data-source="name">
@@ -262,6 +276,16 @@
 				//跳转详情页
 				$(".m-fabric .fabric > a").click(function(){
 					var $source = $(this);
+					//填写表单
+					$(".detail-form input").each(function(){
+						var name = $(this).attr("name");
+						var value = $source.data(name);
+						if(!value){
+							value = "";
+						}
+						$(this).val(value);
+					});
+
 					$(".m-fabric-detail .auto-field").each(function(){
 						var name = $(this).data("source");
 						var value = $source.data(name);
@@ -270,6 +294,9 @@
 						}
 						$(this).text(value);
 					});
+
+					var bgurl = $source.data("bgurl");
+					$(".m-fabric-detail").css("background-image", "url('" + bgurl + "')");
 
 					$(".m-fabric-detail").addClass("show");
 				});
