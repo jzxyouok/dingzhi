@@ -21,13 +21,8 @@
 	margin-left: 15px;
 	margin-right: 7px;
 }
-.m-content select {
+.m-content .input-short {
 	width: 70px;
-	display: inline-block;
-	height: 30px;
-	border-radius: 7px;
-	margin-left: 15px;
-	margin-right: 7px;
 }
 
 .m-content .bottom-control{

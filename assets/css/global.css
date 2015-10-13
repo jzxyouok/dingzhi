@@ -189,3 +189,43 @@ a {
 	float: right;
 	border-width: 0;
 }
+
+
+#alertModal .modal-header,
+#confirmModal  .modal-header {
+	padding: 10px 15px;
+}
+#alertModal .modal-body,
+#confirmModal .modal-body {
+	padding: 25px 15px;
+}
+#alertModal .modal-footer,
+#confirmModal .modal-footer {
+	padding: 5px 10px;
+}
+#alertModal .modal-footer .btn {
+	display: block;
+	background: none;
+	text-align: center;
+	width: 100%;
+	color: #269abc;
+}
+.modal .modal-footer .btn {
+	background-color: #5bc0de;
+	border: 0;
+	color: #333;
+}
+#alertModal.modal,
+#confirmModal.modal {
+	right: 10px;
+	left: 10px;
+	top: 30%;
+	bottom: auto;
+	border-radius: 6px;
+	-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+  	box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+}
+#alertModal.modal .modal-dialog,
+#confirmModal.modal .modal-dialog {
+	margin: auto;
+}
