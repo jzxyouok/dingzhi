@@ -1,0 +1,76 @@
+.calendar-container {
+	width: 100%;
+	overflow-x: auto;
+}
+.calendar-container table {
+	border-collapse: collapse;
+	border-style: solid;
+	border-color: #ccc;
+	border-width: 1px 1px 0 0;
+	color: #333;
+	width: 100%;
+	min-width: 500px;
+	font-size: 14px;
+	table-layout: fixed;
+}
+.calendar-container td {
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+.calendar-container table a {
+	text-decoration: none;
+	color: #333;
+}
+
+.calendar-container thead {
+	text-align: center;
+	line-height: 25px;
+}
+.calendar-container thead .weekend {
+	background-color: #fff4f4;
+	color: #c0999d;
+}
+
+.calendar-container tbody {
+	text-align: right;
+}
+.calendar-container tbody td {
+	height: 70px;
+	vertical-align: top;
+}
+.calendar-container tbody .cal-data {
+	padding-right: 10px;
+}
+.calendar-container tbody td:hover {
+	background-color: #f0f0f0;
+}
+.calendar-container .last-month,
+.calendar-container .next-month {
+	cursor: auto;
+	color: #ccc;
+}
+.calendar-container .last-month:hover ,
+.calendar-container .next-month:hover  {
+	background-color: #ffffff;
+}
+.calendar-container .today {
+	background-color: #e2f1f8;
+}
+.calendar-container .today-text {
+	display: block;
+	background-color: #e48141;
+	color: #fff;
+	border-radius: 5px;
+	font-size: 12px;
+	padding: 0 3px;
+	float: left;
+}
+.calendar-container .table-data {
+	display: block;
+	background-color: #009a44;
+	color: #fff;
+	text-align: center;
+	line-height: 25px;
+	width: 80%;
+	margin: 8px auto 0;
+}

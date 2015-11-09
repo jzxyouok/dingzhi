@@ -1,0 +1,33 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="list-div" id="listDiv">
+<table cellpadding="3" cellspacing="1">
+	<tr>
+    	<th>{$lang.website_name}</th>
+        <th>申请方式</th>
+        <th>{$lang.handler}</th>
+    </tr>
+    <tr align="center">
+    	<td>QQ登陆</td>
+		<td align="left">申请链接：<a href="http://connect.qq.com/intro/login" target="_blank">http://connect.qq.com/intro/login</a></td>
+        <td>
+        	<a href="website.php?act=view&type=qq">{$lang.view}</a>           
+        </td>
+    </tr>	
+    <tr align="center">
+    	<td>新浪登陆</td>
+		<td align="left">申请链接：<a href="http://open.weibo.com/authentication/" target="_blank">http://open.weibo.com/authentication/</a></td>
+        <td>
+        	<a href="website.php?act=view&type=sina">{$lang.view}</a>           
+        </td>
+    </tr>	
+    <tr align="center">
+    	<td>支付宝登陆</td>
+		<td align="left">申请链接：<a href="https://b.alipay.com/order/productDetail.htm?productId=2013052704023441" target="_blank">https://b.alipay.com/order/productDetail.htm?productId=2013052704023441</a></td>
+        <td>
+        	<a href="website.php?act=view&type=alipay">{$lang.view}</a>           
+        </td>
+    </tr>	
+</table>
+</div>
+{include file="pagefooter.htm"}

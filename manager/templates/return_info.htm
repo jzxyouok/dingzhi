@@ -1,0 +1,156 @@
+<!-- $Id: msg_info.htm 16854 2009-12-07 06:20:09Z sxc_shop $ -->
+{include file="pageheader.htm"}
+
+<link type="text/css" href="../lyecs_style/css/UserCenter.lyecs.css" rel="stylesheet" />
+<div class="main-div">
+<div class="tab_able_box">
+
+	<div class="return_list box">
+	<div class="hd"><h3>退/换货记录</h3><div class="extra"></div></div>
+	<div class="bd">
+
+<div id="process" class="section5" style="margin:20px 0 20px 20px">
+	<div class="node fore ready">
+	<ul>
+	<li class="tx1"></li>
+	<li class="tx2">提交申请</li>
+	<li class="tx3"></li>
+	</ul>
+	</div>
+	<div class="proce{if $return.return_status >= 1} ready{else} wait{/if}">
+	<ul>
+	<li class="tx1"></li>
+	</ul>
+	</div>
+	
+	<div class="node{if $return.return_status >= 1} ready{else} wait{/if}">
+	<ul>
+	<li class="tx1">{if $return.return_status == 1}售后审核中，请耐心等待{/if}{if $return.return_status==3}您的申请未能通过，详情请联系客服{/if}{if $return.return_status == 2}申请通过，等待处理{/if}</li>
+	<li class="tx2">客服审核</li>
+	<li class="tx3"></li>
+	</ul>
+	</div>
+	<div class="proce{if $return.return_status >= 4} ready{else} wait{/if}">
+	<ul>
+	<li class="tx1"></li>
+	</ul>
+	</div>
+	
+	<div class="node{if $return.return_status >= 4} ready{else} wait{/if}">
+	<ul>
+	<li class="tx1">{if $return.return_status == 4}售后处理中{/if}</li>
+	<li class="tx2">售后收货</li>
+	<li class="tx3"></li>
+	</ul>
+	</div>
+	<div class="proce{if $return.return_status >= 5} ready{else} wait{/if}">
+	<ul>
+	<li class="tx1"></li>
+	</ul>
+	</div>
+	
+	<div class="node{if $return.return_status >= 5} ready{else} wait{/if}">
+	<ul>
+	<li class="tx1">{if $return.return_status == 5}申请已处理，等待您确认{/if}</li>
+	<li class="tx2">客户确认</li>
+	<li class="tx3"></li>
+	</ul>
+	</div>
+	<div class="proce{if $return.return_status == 6} ready{else} wait{/if}">
+	<ul>
+	<li class="tx1"></li>
+	</ul>
+	</div>
+	
+	<div class="node{if $return.return_status == 6} ready{else} wait{/if}">
+	<ul>
+	<li class="tx1"></li>
+	<li class="tx2">完成</li>
+	<li class="tx3"></li>
+	</ul>
+	</div>
+</div>
+	<table class="data_table" style="border: 1px solid #eee;border-top:2px solid #ccc;">
+		<colgroup>
+			<col width="100"/>
+			<col width="500"/>
+		</colgroup>
+		<tbody>
+			<tr class="" >
+				<td style="vertical-align:middle;text-align:left;border: 1px solid #eee;font-weight:bold">买家问题描述</td>
+				<td style="vertical-align:middle;text-align:left;border: 1px solid #eee;">{$return.return_desc}</td>
+			</tr>
+			<tr class="" >
+				<td style="vertical-align:middle;text-align:left;border: 1px solid #eee;font-weight:bold">服务类型</td>
+				<td style="vertical-align:middle;text-align:left;border: 1px solid #eee;">{$return.return_type_name}</td>
+			</tr>
+			<tr class="" >
+				<td style="vertical-align:middle;text-align:left;border: 1px solid #eee;font-weight:bold">买家所上传图片</td>
+				<td style="vertical-align:middle;text-align:left;border: 1px solid #eee;">{if $return.return_pic}<img width=200 height=200 src="../data/feedbackimg/{$return.return_pic}">{else}无上传图片{/if}</td>
+			</tr><tr class="" >
+				<td style="vertical-align:middle;text-align:left;border: 1px solid #eee;font-weight:bold">售后回复</td>
+				<td style="vertical-align:middle;text-align:left;border: 1px solid #eee;">
+<form method="post" action="order.php?act=return_act" name="theForm"  onsubmit="return validate()">
+<table border="0" width="98%">
+
+  <tr>
+    <td>当前操作状态：</td>
+    <td>
+<input type="radio" name="return_status" value="1" {if $return.return_status==1}checked="checked" {/if} tabindex="0" class="radio" id="return_status1"/>正在审核处理
+<input type="radio" name="return_status" value="2" {if $return.return_status==2}checked="checked" {/if} tabindex="1" class="radio" id="return_status2"/>审核通过，正在处理
+<input type="radio" name="return_status" value="3" {if $return.return_status==3}checked="checked" {/if} tabindex="2" class="radio" id="return_status3" onclick="alert('请在回复中注明原因！')"/>审核未通过
+<input type="radio" name="return_status" value="4" {if $return.return_status==4}checked="checked" {/if} tabindex="3" class="radio" id="return_status4"/>售后收货中
+<input type="radio" name="return_status" value="5" {if $return.return_status==5}checked="checked" {/if} tabindex="4" class="radio" id="return_status5"/>售后已处理
+<input type="radio" name="return_status" value="6" {if $return.return_status==6}checked="checked" {/if} tabindex="5" class="radio" id="return_status6"/>已完成
+</tr>
+  <tr>
+    <td>当前回复内容：</td>
+    <td rowspan="2"><textarea name="return_answer" cols="50" rows="4" wrap="VIRTUAL" id="msg_content">{$return.return_answer}</textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="hidden" name="rec_id" value="{$return.rec_id}">      
+      <input name="Submit" value="{$lang.button_submit}" type="submit" class="button">
+    </td>
+  </tr>
+</table>
+</form>
+				
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="blank"></div>
+</div>
+
+{insert_scripts files="../js/utils.js,validator.js"}
+<script language="JavaScript">
+<!--
+{literal}
+document.forms['theForm'].elements['msg_content'].focus();
+
+/**
+ * 检查表单输入的数据
+ */
+function validate()
+{
+    validator = new Validator("theForm");
+    validator.required("msg_content",  no_reply_content);
+    return validator.passed();
+}
+
+onload = function()
+{
+    // 开始检查订单
+    startCheckOrder();
+}
+//-->
+{/literal}
+</script>
+{include file="pagefooter.htm"}

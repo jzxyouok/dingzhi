@@ -1,0 +1,33 @@
+.m-content form {
+	padding: 20px;
+}
+.m-content form textarea {
+	border-radius: 1px;
+}
+.m-content .control {
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+	margin-top: 10px;
+}
+.m-content .control a {
+	display: block;
+	text-decoration: none;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	box-flex: 1;
+	text-align: center;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+}
+.m-content .control .cancel-btn {
+	background-color: #BBBBBB;
+	color: #333;
+	margin-right: 2px;
+}
+.m-content .control .confirm-btn {
+	background-color: #27940C;
+	color: #fff;
+	margin-left: 2px;
+}

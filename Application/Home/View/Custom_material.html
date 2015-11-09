@@ -1,0 +1,175 @@
+
+<link rel="stylesheet" href="./assets/css/item/fabric.css">
+
+<div class="m-content">
+    <div class="m-fabric">
+        <div class="title">
+            <div class="pull-left">
+                <span>选面料</span>
+                <span>1/3</span>
+            </div>
+            <div class="pull-right">
+                <a href="javascript:void(0);" data-action="modal" data-target="#modal">
+                    <span>筛选</span>
+                    <span class="glyphicon glyphicon-triangle-bottom"></span>
+                </a>
+            </div>
+        </div>
+        <div class="fabric-list">
+            <volist name="material_list" id="material">
+            <div class="fabric col-xs-6">
+                <a href="javascript:void(0);"
+                   data-name="{$material.name}"
+                   data-price="{$material.price}元"
+                   data-material="{$material.material}"
+                   data-weight="{$material.weight}"
+                   data-season="{$material.season}"
+                   data-grain="{$material.grain}"
+                   data-material_id="{$material.material_id}"
+                   data-bgurl="{$material.material_img}">
+                    <img src="{$material.material_img}">
+                    <div class="infobg"></div>
+                    <div class="info">
+                        <div>{$material.name}</div>
+                        <div>
+                            <div class="pull-left">
+                                {$material.material}
+                            </div>
+                            <div class="pull-right">
+                                {$material.price}元
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            </volist>
+        </div>
+    </div>
+</div>
+
+<!-- detail start -->
+<div class="m-fabric-detail">
+    <form class="detail-form" name="myForm" method="get" action="index.php">
+        <input type="hidden" name="m" id="g" value="Home">
+        <input type="hidden" name="c" id="c" value="Custom">
+        <input type="hidden" name="a" id="a" value="design">
+        <!--<input type="hidden" name="name">-->
+        <!--<input type="hidden" name="price">-->
+        <!--<input type="hidden" name="material">-->
+        <!--<input type="hidden" name="weight">-->
+        <!--<input type="hidden" name="season">-->
+        <!--<input type="hidden" name="grain">-->
+        <input type="hidden" name="material_id" id="material_id">
+        <!--<input type="hidden" name="bgurl">-->
+    </form>
+    <div class="info">
+        <div class="main">
+            <div class="pull-left auto-field" data-source="name">
+            </div>
+            <div class="pull-right auto-field" data-source="price">
+            </div>
+        </div>
+        <table>
+            <tr>
+                <td class="auto-field" data-source="material"></td>
+                <td class="auto-field" data-source="weight"></td>
+            </tr>
+            <tr>
+                <td>
+                    <span>季节：</span>
+							<span class="auto-field" data-source="season"></span>
+                </td>
+                <td>
+                    <span>纹理：</span>
+							<span class="auto-field" data-source="grain"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="control">
+        <a href="javascript:void(0);" class="cancel-btn">取消</a>
+        <a href="#" onclick="myForm.submit();" class="confirm-btn">确定</a>
+    </div>
+</div>
+<!-- detail end -->
+
+<!-- 弹窗 start-->
+<div id="modal" class="m-modal">
+    <div class="bg"></div>
+    <div class="m-modal-content">
+        <div class="title">面料分类</div>
+        <form onsubmit="return false;">
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="style">
+                        <span>商务经典系列</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="style">
+                        <span>商务休闲系列</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="style">
+                        <span>彩色扣时尚系</span>
+                    </label>
+                </li>
+            </ul>
+        </form>
+        <div class="control">
+            <button type="button" class="cancel-btn">取消</button>
+            <button type="button" class="confirm-btn">确定</button>
+        </div>
+    </div>
+</div>
+<!-- 弹窗 end-->
+
+<script type="text/javascript">
+    $(function(){
+        $("#modal .confirm-btn").click(function(){
+            //绑定弹窗的确定按钮事件
+            alert("选定确定！！");
+            $("#modal").hide();
+        });
+
+        //跳转详情页
+        $(".m-fabric .fabric > a").click(function(){
+            var $source = $(this);
+            //填写表单
+            $("#material_id").val($source.data("material_id"));
+//            $(".detail-form input").each(function(){
+//                var name = $(this).attr("name");
+//                var value = $source.data(name);
+//                if(!value){
+//                    value = "";
+//                }
+//                $(this).val(value);
+//            });
+
+            $(".m-fabric-detail .auto-field").each(function(){
+                var name = $(this).data("source");
+                var value = $source.data(name);
+                if(!value){
+                    value = "";
+                }
+                $(this).text(value);
+            });
+
+            var bgurl = $source.data("bgurl");
+            $(".m-fabric-detail").css("background-image", "url('" + bgurl + "')");
+
+            $(".m-fabric-detail").addClass("show");
+        });
+        //返回
+        $(".m-fabric-detail .cancel-btn").click(function(){
+            $(".m-fabric-detail").removeClass("show");
+        });
+        $(".m-fabric-detail").click(function(){
+            $(".m-head").click();
+        });
+    });
+</script>

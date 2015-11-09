@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name ="viewport" content ="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>服装定制</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/global.css?t=1">
+    <script src="./assets/js/jquery-1.10.2.min.js"></script>
+    <script src="./assets/js/global.js"></script>
+    <script src="./assets/js/extend.js"></script>
+    <script src="./assets/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="g-container">
+    <div class="m-head">
+        <div class="u-left">
+            <a href="javascript:void(0);" class="menu-btn">
+                <i></i>
+            </a>
+        </div>
+        <span>{$title}</span>
+    </div>
+    <div class="m-nav">
+        <ul>
+            <li>
+                <a href="{:C('HOST')}">主页</a>
+            </li>
+            <li>
+                <a href="{:U('Home/Custom/material')}">定制衬衫</a>
+            </li>
+            <li class="nav-title">
+                <a href="javascript:void(0);">我的账户</a>
+            </li>
+            <li>
+                <a href="{:U('Home/Login/index')}">会员登录</a>
+            </li>
+            <li>
+                <a href="{:U('Home/Order/index')}">查看订单</a>
+            </li>
+            <li>
+                <a href="./page/usercenter/myaccount.html">我的账户</a>
+            </li>
+            <li>
+                <a href="./page/contact/contact.html">联系我们</a>
+            </li>
+        </ul>
+    </div>
+
+{__CONTENT__}
+
+</div>
+
+<script>
+    function alert(msg) {
+        $.alert({
+//            title: "dingzhi",
+//            confirmText: "确认",
+            content: msg
+        });
+    }
+    function _confirm(msg, callback) {
+        $.confirm({
+            title: "确认操作",
+            content: msg,
+            success: callback
+        })
+    }
+
+    function error(msg) {
+        $.alert({
+            content: msg,
+            success: function(){history.back();}
+        });
+    }
+    function goto(url) {
+        location.href=url;
+    }
+    $(function(){
+        <if condition="$msg">
+            error("{$msg}");
+        </if>
+    });
+</script>
+</body>
+</html>

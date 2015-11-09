@@ -1,0 +1,48 @@
+<!-- $Id: category_move.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+{include file="pageheader.htm"}
+<div class="main-div">
+<form action="area_cat.php" method="post" name="theForm" enctype="multipart/form-data">
+<table width="100%">
+  <tr>
+    <td>
+      <div style="font-weight:bold"><img src="images/notice.gif" width="16" height="16" border="0" /> 什么是转移商品地区?</div>
+       <ul>
+         <li>在添加商品或者在商品管理中,如果需要对商品的地区进行变更,那么你可以通过此功能,正确管理你的商品地区。</li>
+       </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <strong>将此地区</strong>&nbsp;&nbsp;
+      <select name="cat_id">
+       <option value="0">{$lang.select_please}</option>
+       {$cat_select}
+      </select>&nbsp;&nbsp;
+      <strong>{$lang.target_cat}</strong>
+      <select name="target_cat_id">
+       <option value="0">{$lang.select_please}</option>
+       {$cat_select}
+      </select>&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="submit" name="move_cat" value="开始转移" class="button">
+      
+      <input type="hidden" name="act" value="{$form_act}" />
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+
+{insert_scripts files="../js/utils.js,validator.js"}
+{literal}
+<script language="JavaScript">
+<!--
+onload = function()
+{
+    // 开始检查订单
+    startCheckOrder();
+}
+
+//-->
+</script>
+{/literal}
+{include file="pagefooter.htm"}

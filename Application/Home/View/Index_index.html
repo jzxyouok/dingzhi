@@ -1,0 +1,26 @@
+
+<link rel="stylesheet" href="./assets/css/index.css">
+
+<div class="m-content">
+    <div class="m-jumbotron">
+        <img onclick="location.href='{:U('Home/Custom/material')}'" src="./assets/img/dingzhi02.jpg">
+        <!--<a href="./page/item/fabric.html">现在设计</a>-->
+    </div>
+    <div class="m-item">
+        <volist name="list" id="vo">
+        <div class="sub-item col-xs-6">
+            <div class="pic">
+                <a href="{:U('Home/Goods/detail',array('id'=>$vo['goods_id']))}">
+                    <img src="{$vo.image}">
+                </a>
+            </div>
+            <div class="title">
+                {$vo.goods_name}
+            </div>
+            <div class="price">
+                {$vo.shop_price}元
+            </div>
+        </div>
+        </volist>
+    </div>
+</div>

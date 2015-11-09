@@ -1,0 +1,17 @@
+
+<link rel="stylesheet" href="./assets/css/login/login.css">
+
+<div class="m-content">
+    <form class="login-form" action="{:U('Home/Login/login')}" method="post" name="myForm">
+        <div class="form-group">
+            <input type="text" name="username" class="form-control" placeholder="手机号">
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="密码">
+        </div>
+        <input type="hidden" name="referer" value="{$referer}" />
+        <button type="button" class="btn login-btn btn-block" onclick="myForm.submit();">立刻登录</button>
+        <a href="{:U('Home/Login/register')}" class="btn btn-block register-link">新会员注册</a>
+    </form>
+    <a href="javascript:history.back()" class="back-btn">返回</a>
+</div>

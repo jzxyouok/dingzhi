@@ -1,0 +1,20 @@
+
+<link rel="stylesheet" href="./assets/css/login/login.css">
+
+<div class="m-content">
+    <form class="login-form" action="{:U('Home/Login/register')}" name="myForm" method="post">
+        <div class="form-group">
+            <input type="text" name="username" class="form-control" placeholder="请输入会员名">
+        </div>
+        <div class="form-group">
+            <input type="text" name="mobile" class="form-control" placeholder="请输入手机号">
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="请输入密码">
+        </div>
+        <div class="form-group">
+            <input type="password" name="pwd" class="form-control" placeholder="请确认密码">
+        </div>
+        <button type="button" class="btn register-btn btn-block" onclick="myForm.submit();">提交</button>
+    </form>
+</div>

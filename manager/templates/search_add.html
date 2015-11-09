@@ -1,0 +1,18 @@
+{include file="pageheader.htm"}
+<div style="background-color: #F4FAFB;"></div>
+<div class="list-div">
+    <form action="search_list.php?act=add2" method="post" name="theForm">
+        <table cellspacing="1" cellpadding="3" width="100%">
+            <tr align="center">
+                <td class="label" scope="row">关键词：</td>
+                <td><input name="keyword" type="text" value="" size="30" style="text-align:left;float:left;"  /></td>
+            </tr>
+            <tr align="center">
+                <td colspan="22" scope="row">
+                    <input type="submit" name="submit" value="{$lang.button_submit}" class="button" />
+                    <input type="reset" name="reset" value="{$lang.button_reset}" class="button" />
+            </tr>
+        </table>
+    </form>
+</div>
+{include file="pagefooter.htm"}

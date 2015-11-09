@@ -1,0 +1,86 @@
+<!-- $Id: category_info.htm 16752 2009-10-20 09:59:38Z wangleisvn $ -->
+{include file="pageheader.htm"}
+<!-- start add new category form -->
+<div class="main-div">
+  <form action="area_cat.php" method="post" name="theForm" enctype="multipart/form-data" onsubmit="return validate()">
+  <table width="100%" id="general-table">
+      <tr>
+        <td class="label">地区名称:</td>
+        <td>
+          <input type='text' name='cat_name' maxlength="20" value='{$cat_info.cat_name|escape:html}' size='27' /> <font color="red">*</font>
+        </td>
+      </tr>
+      <tr>
+        <td class="label">上级地区:</td>
+        <td>
+          <select name="parent_id">
+            <option value="0">顶级地区</option>
+            {$cat_select}
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="label">排序:</td>
+        <td>
+          <input type="text" name='sort_order' {if $cat_info.sort_order}value='{$cat_info.sort_order}'{else} value="50"{/if} size="15" />
+        </td>
+      </tr>
+      <tr>
+        <td class="label">索引字母:</td>
+        <td>
+           <input type="text" name='shortname' value='{$cat_info.shortname}' size="7" />
+		  <font style="color:#666">输入地区第一个字的拼音大写字母，不填则自动判断（多音字自动判断不一字准确）</font>
+        </td>
+      </tr>
+      <tr>
+        <td class="label">是否显示:</td>
+        <td>
+          <input type="radio" name="is_show" value="1" {if $cat_info.is_show neq 0} checked="true"{/if}/> {$lang.yes}
+          <input type="radio" name="is_show" value="0" {if $cat_info.is_show eq 0} checked="true"{/if} /> {$lang.no}
+		  <span style="color:#666">（选择'是'将在地区切换中显示）</span>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="label">备注:</td>
+        <td>
+          <textarea name='cat_desc' rows="6" cols="48">{$cat_info.cat_desc}</textarea>
+        </td>
+      </tr>
+      </table>
+      <div class="button-div">
+        <input type="submit" value="{$lang.button_submit}" />
+      </div>
+    <input type="hidden" name="act" value="{$form_act}" />
+    <input type="hidden" name="old_cat_name" value="{$cat_info.cat_name}" />
+    <input type="hidden" name="cat_id" value="{$cat_info.cat_id}" />
+  </form>
+</div>
+{insert_scripts files="../js/utils.js,validator.js"}
+{literal}
+<script language="JavaScript">
+<!--
+document.forms['theForm'].elements['cat_name'].focus();
+/**
+ * 检查表单输入的数据
+ */
+function validate()
+{
+  validator = new Validator("theForm");
+  validator.required("cat_name",      catname_empty);
+  if (parseInt(document.forms['theForm'].elements['grade'].value) >10 || parseInt(document.forms['theForm'].elements['grade'].value) < 0)
+  {
+    validator.addErrorMsg('{$lang.grade_error}');
+  }
+  return validator.passed();
+}
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+}
+
+//-->
+</script>
+{/literal}
+{include file="pagefooter.htm"}

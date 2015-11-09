@@ -1,0 +1,31 @@
+
+<link rel="stylesheet" href="./assets/css/item/itemdetail.css">
+
+<div class="m-content">
+    <div class="item-pic">
+        <img src="{$image}">
+    </div>
+    <div class="item-title">{$goods_name}</div>
+    <div class="item-price">价格：{$shop_price}元</div>
+    <div class="item-info">
+        <h2>商品详情：</h2>
+        <div class="main-pic">
+            {$goods_desc}
+            <!-- 这里放商品详情介绍图 -->
+        </div>
+    </div>
+
+    <a href="#" onclick="buy()" class="buy-btn">立刻购买</a>
+</div>
+
+<script>
+    function buy() {
+        $.get("{:U('Home/Goods/buy',array('id'=>$_GET['id']),true,true)}", function(data){
+            if (data.error == 0) {
+                location.href = data.data.redirect;
+            } else {
+                alert(data.msg);
+            }
+        });
+    }
+</script>

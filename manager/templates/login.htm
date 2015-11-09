@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{if $ur_here}{$ur_here} - {/if}{$lang.cp_home}</title>
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="static/css/login.css" rel="stylesheet" type="text/css" />
+{insert_scripts files="../js/utils.js,validator.js"}
+<script language="JavaScript">
+<!--
+// 这里把JS用到的所有语言都赋值到这里
+{foreach from=$lang.js_languages key=key item=item}
+var {$key} = "{$item}";
+{/foreach}
+{literal}
+if (window.parent != window)
+{
+  window.top.location.href = location.href;
+}
+{/literal}
+//-->
+</script>
+</head>
+<body>
+<div class="login">
+	<h1><a href="../">{$option.shop_name}</a></h1>
+	<form method="post" action="privilege.php" name='theForm' onsubmit="return validate()" class="clearfix">
+		<p><label>{$lang.label_username}<input type="text" name="username" class="input" /></label></p>
+		<p><label>{$lang.label_password}<input type="password" name="password" class="input" /></label></p>
+		{if $gd_version > 0}
+		<p class="captcha"><label>{$lang.label_captcha}<span><input type="text" name="captcha" maxlength="4" class="input" /><img src="index.php?act=captcha&{$random}" alt="CAPTCHA" onclick="this.src='index.php?act=captcha&'+Math.random()" title="{$lang.click_for_another}" /></span></label></p>
+		{/if}
+		<p class="submit">
+			<a href="get_password.php?act=forget_pwd" class="forgot">{$lang.forget_pwd}</a>
+			<input type="submit" value="{$lang.signin_now}" class="button btn_3" />
+			<label class="remember"><input type="checkbox" value="1" name="remember" />{$lang.remember}</label>
+			<input type="hidden" name="act" value="signin" />
+		</p>
+	</form>
+</div>
+<script language="JavaScript">
+<!--
+  document.forms['theForm'].elements['username'].focus();
+  {literal}
+  /**
+   * 检查表单输入的内容
+   */
+  function validate()
+  {
+    var validator = new Validator('theForm');
+    validator.required('username', user_name_empty);
+    //validator.required('password', password_empty);
+    if (document.forms['theForm'].elements['captcha'])
+    {
+      validator.required('captcha', captcha_empty);
+    }
+    return validator.passed();
+  }
+  {/literal}
+//-->
+</script>
+</body>

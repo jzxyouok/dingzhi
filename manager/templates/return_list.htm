@@ -1,0 +1,105 @@
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<!-- 订单搜索 -->
+
+<!-- 订单列表 -->
+<form method="post" action="order.php?act=operate" name="listForm" onsubmit="return check()">
+  <div class="list-div" id="listDiv">
+{/if}
+
+<table cellpadding="3" cellspacing="1">
+  <tr>
+    <th>
+     {$sort_delivery_sn}
+    </th>
+    <th>{$lang.order_sn}</th>
+    <th>退/换货时间</th>
+    <th>退/换货人</th>
+    <th>发货时间</th>
+    <th>服务类型</th>
+    <th>状态</th>
+    <th>{$lang.handler}</th>
+  <tr>
+  {foreach from=$return_list item=return key=dkey}
+  <tr>
+    <td valign="top" nowrap="nowrap"><input type="checkbox" name="back_id[]" value="{$return.back_id}" />{$return.delivery_sn}</td>
+    <td>{$return.order_sn}<br /></td>
+    <td align="center" valign="top" nowrap="nowrap">{$return.return_add_time}</td>
+    <td align="left" valign="top"><a href="mailto:{$return.email}"> {$return.consignee|escape}</a></td>
+    <td align="center" valign="top" nowrap="nowrap">{$return.shipping_time}</td>
+    <td align="center" valign="top" nowrap="nowrap">{$return.return_type_name}</td>
+    <td align="center" valign="top" nowrap="nowrap">{$return.return_status_name}</td>
+    <td align="center" valign="top"  nowrap="nowrap">
+     <a href="order.php?act=return_info&rec_id={$return.rec_id}">{$lang.detail}</a>
+    </td>
+  </tr>
+  {/foreach}
+</table>
+
+<!-- 分页 -->
+<table id="page-table" cellspacing="0">
+  <tr>
+    <td align="right" nowrap="true">
+    {include file="page.htm"}
+    </td>
+  </tr>
+</table>
+
+{if $full_page}
+  </div>
+</form>
+<script language="JavaScript">
+listTable.recordCount = {$record_count};
+listTable.pageCount = {$page_count};
+
+{foreach from=$filter item=item key=key}
+listTable.filter.{$key} = '{$item}';
+{/foreach}
+{literal}
+
+    onload = function()
+    {
+        // 开始检查订单
+        startCheckOrder();
+                
+        //
+        listTable.query = "return_query";
+    }
+
+    /**
+     * 搜索订单
+     */
+    function searchOrder()
+    {
+        listTable.filter['page'] = 1;
+                listTable.query = "return_query";
+        listTable.loadList();
+    }
+
+    function check()
+    {
+      var snArray = new Array();
+      var eles = document.forms['listForm'].elements;
+      for (var i=0; i<eles.length; i++)
+      {
+        if (eles[i].tagName == 'INPUT' && eles[i].type == 'checkbox' && eles[i].checked && eles[i].value != 'on')
+        {
+          snArray.push(eles[i].value);
+        }
+      }
+      if (snArray.length == 0)
+      {
+        return false;
+      }
+      else
+      {
+        eles['order_id'].value = snArray.toString();
+        return true;
+      }
+    }
+</script>
+{/literal}
+
+{include file="pagefooter.htm"}
+{/if}

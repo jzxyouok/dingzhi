@@ -1,0 +1,99 @@
+
+<link rel="stylesheet" href="./assets/css/pay/shoppingcar.css">
+
+<div class="m-content">
+    <div class="list">
+        <volist name="cart_data" id="vo">
+        <div class="one-item-info" id="cart_{$vo.rec_id}">
+            <div class="box-row">
+                <div class="pic">
+                    <img src="{$vo.goods_thumb}">
+                </div>
+                <div class="amount">
+                    <div>{$vo.goods_name}</div>
+                    <div class="amount-control">
+                        <a href="javascript:edit({$vo.rec_id}, 0);" class="minus-btn">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </a>
+                        <span id="num_{$vo.rec_id}" class="amount-val">{$vo.goods_number}</span>
+                        <a href="javascript:edit({$vo.rec_id}, 1);" class="plus-btn">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="price">单件：{$vo.goods_price}元</div>
+            </div>
+            <div class="control-row">
+                <if condition="$vo['is_custom']">
+                <a href="{:U('Home/Custom/design',array('custom_id'=>$vo['goods_id']))}">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    <span>修改</span>
+                </a>
+                </if>
+                <a href="javascript:del({$vo.rec_id});">
+                    <span class="glyphicon glyphicon-remove-sign"></span>
+                    <span>删除</span>
+                </a>
+            </div>
+        </div>
+        </volist>
+    </div>
+    <div class="payment-container">
+        <div class="postfee">
+            <div class="pull-left">邮费</div>
+            <div class="pull-right">免费</div>
+        </div>
+        <div class="total-payment">
+            <div class="pull-left">费用总额</div>
+            <div class="pull-right">{$total_money}元</div>
+        </div>
+    </div>
+    <div class="bottom-control">
+        <div class="pull-left">
+            <a class="back-btn btn btn-success btn-block" href="{:U('Home/Index/index')}">继续购买</a>
+        </div>
+        <div class="pull-right">
+            <a class="pay-btn btn btn-danger btn-block" href="{:U('Home/Cart/order')}">结算</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //加减物品函数
+    function edit(goods_id,type){
+        $.ajax({
+            type: "post",
+            url: "{:U('Home/Cart/update')}",
+            data: {id:goods_id,inc:type},
+            success: function (result) {
+                if (result.error == 0) {
+                    $("#num_"+goods_id).html(result.data.num);
+                } else {
+                    alert(result.msg);
+                }
+            },
+            error: function () {
+                alert("网络错误");
+            }
+        });
+    }
+    function del(goods_id){
+        _confirm('确认要删除吗？', function(){
+            $.ajax({
+                type: "post",
+                url: "{:U('Home/Cart/delete')}",
+                data: {id:goods_id},
+                success: function (result) {
+                    if (result.error == 0) {
+                        $("#cart_"+goods_id).remove();
+                    } else {
+                        alert(result.msg);
+                    }
+                },
+                error: function () {
+                    alert("网络错误");
+                }
+            });
+        });
+    }
+</script>

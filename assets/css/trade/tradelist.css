@@ -1,0 +1,78 @@
+.m-list {
+	padding-bottom: 20px;
+}
+.m-list .trade {
+	margin: 15px 15px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+.m-list .trade-sub-info {
+	border-top: 1px solid #ccc;
+	padding: 0 10px;
+	line-height: 30px;
+}
+.m-list .trade-sub-info:first-child {
+	border-top-width: 0;
+}
+.m-list .item {
+	height: 80px;
+	line-height: 80px;
+}
+.m-list .item img {
+	height: 70px;
+	vertical-align: middle;
+}
+.m-list .item > div {
+	height: 80px;
+}
+.m-list .item .pull-left span {
+	vertical-align: middle;
+	padding-left: 10px;
+}
+.m-list .item .pull-right {
+	font-size: 14px;
+	font-weight: bold;
+}
+.m-list .price {
+	text-align: right;
+}
+.m-list .price .amount {
+	margin-right: 20px;
+}
+.m-list .seller .mobile {
+	padding-left: 10px;
+}
+.m-list .seller {
+	line-height: 40px;
+}
+.m-list .status {
+	height: 40px;
+	line-height: 40px;
+}
+.m-list .status .pull-left,
+.m-list .status .pull-right {
+	height: 40px;
+}
+.m-list .status .status-green {
+	color: #259B24;
+}
+.m-list .status .rate-btn,
+.m-list .status .cancel-btn {
+	display: block;
+	margin-top: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 7px;
+	text-align: center;
+	text-decoration: none;
+}
+.m-list .status .rate-btn {
+	background-color: #26A69A;
+	color: #fff;
+}
+.m-list .status .cancel-btn {
+	background-color: #CFCFCF;
+	color: #333;
+}

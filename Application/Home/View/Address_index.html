@@ -1,0 +1,57 @@
+
+<link rel="stylesheet" href="./assets/css/address/addresslist.css">
+
+<div class="m-content">
+    <div class="list">
+        <ul>
+            <volist name="address_list" id="vo">
+            <li data-address_id="{$vo.id}">
+                <div class="info-box">
+                    <div class="addr">{$vo.address}</div>
+                    <div class="userinfo">
+                        <span>{$vo.name}</span>
+                        <span>{$vo.phone}</span>
+                    </div>
+                </div>
+                <div class="control-box">
+                    <a href="javascript:void(0);">
+                        <span class="glyphicon glyphicon-remove-sign"></span>
+                    </a>
+                </div>
+            </li>
+            </volist>
+        </ul>
+    </div>
+    <div class="bottom-box">
+        <a href="{:U('Home/Address/add')}" class="btn btn-danger btn-block">添加收货地址</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        //选择
+        $(".list .info-box").click(function(){
+            var address = $(this).closest("li");
+            $.post("{:U('Home/Address/choose')}",
+                {id:address.data('address_id')},
+                function(data) {
+                    if (data.error == 0) {
+                        location.href = data.data.redirect;
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            );
+        });
+        //删除
+        $(".list .control-box a").click(function(){
+            var address = $(this).closest("li");
+            $.post("{:U('Home/Address/delete')}",
+                {id:address.data('address_id')},
+                function() {
+                    address.remove();
+                }
+            );
+        });
+    });
+</script>

@@ -1,0 +1,14 @@
+.m-content form {
+	padding: 15px;
+}
+.m-content form h5 {
+	font-weight: bold;
+	margin-bottom: 25px;
+	padding-left: 13px;
+}
+.m-content form input {
+	border-radius: 7px;
+}
+.m-content form .btn {
+	border-radius: 7px;
+}

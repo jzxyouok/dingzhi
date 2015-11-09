@@ -1,0 +1,110 @@
+
+<link rel="stylesheet" href="./assets/css/trade/tradelist.css">
+
+
+<div class="m-content">
+    <div class="m-list">
+        <volist name="list" id="vo">
+        <div class="trade">
+            <div class="trade-sub-info tid">
+                <span>订单编号：</span><span>{$vo.order_sn}</span>
+            </div>
+            <volist name="vo.goods_list" id="goods_vo">
+                <div class="trade-sub-info item">
+                    <div class="pull-left">
+                        <img src="{$goods_vo.goods_thumb}">
+                        <span>{$goods_vo.goods_name}</span>
+                    </div>
+                    <div class="pull-right">
+                        {$goods_vo.goods_price}元
+                    </div>
+                </div>
+            </volist>
+            <div class="trade-sub-info price">
+                <div>
+                    <span>运费：</span>
+                    <span>免费</span>
+                </div>
+                <div>
+                    <span class="amount">共{$vo.total_goods_number}件</span>
+                    <span>合计总额：</span>
+                    <span>{$vo.order_amount}元</span>
+                </div>
+            </div>
+            <div class="trade-sub-info seller">
+                <span>经销商：</span>
+                <span>广州恒宝广场店</span>
+                <span class="mobile"><a href="tel:13431054565">13431054565</a></span>
+            </div>
+            <div class="trade-sub-info status">
+                <switch name="vo.status">
+                    <case value="finished">
+                        <div class="pull-left status-green">
+                            已完成
+                        </div>
+                        <div class="pull-right">
+                            <a href="{:U('Home/Order/comment',array('order_sn'=>$vo.order_sn))}" class="rate-btn">评价订单</a>
+                        </div>
+                    </case>
+                    <case value="shipped">
+                        <div class="pull-left status-green">
+                            已发货
+                        </div>
+                        <div class="pull-right">
+                            <span>顺风快递</span>
+                            <span>{$invoice_no}</span>
+                        </div>
+                    </case>
+                    <case value="await_ship">
+                        <div class="pull-left status-green">
+                            已支付
+                        </div>
+                        <div class="pull-right">
+                            <a href="javascript:order_cancel('{$vo.order_sn}');" class="cancel-btn">取消订单</a>
+                        </div>
+                    </case>
+                    <case value="unprocessed">
+                        <div class="pull-left status-green">
+                            未支付
+                        </div>
+                        <div class="pull-right">
+                        </div>
+                    </case>
+                    <default />
+                </switch>
+            </div>
+        </div>
+        </volist>
+    </div>
+</div>
+
+<script>
+    function order_cancel(order_sn) {
+        alert('取消订单');return;
+        $.confirm({
+            title: "COZYSTEPS",
+            content: "确认要取消订单么？",
+            confirmText: "确认",
+            cancelText: "取消",
+            success: function(){
+                $.ajax({
+                    type: "post",
+                    url: '/wxshop/order.php?&page_type=order_cancel&order_id='+order_id,
+                    data: [],
+                    success: function (result) {
+                        var ary = eval('('+result+')');
+                        $.alert({
+                            title: "COZYSTEPS",
+                            content: ary['msg'],
+                            confirmText: "确认"
+                        });
+                        //操作成功，删除整个节点
+                        if(ary['code']==1){
+                            $("#all_div"+order_id).removeClass().addClass("my_none");
+                        }
+                    }
+                });
+            }
+        });
+    }
+</script>
