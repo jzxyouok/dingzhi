@@ -1,0 +1,13 @@
+form {
+	padding: 30px 20px;
+}
+form .form-control {
+	border-radius: 7px;
+}
+form .total-payment {
+	font-weight: bold;
+}
+form .btn-success {
+	border-radius: 7px;
+	font-weight: bold;
+}

@@ -1,0 +1,48 @@
+.m-jumbotron {
+	position: relative;
+}
+.m-jumbotron img {
+	width: 100%;
+}
+.m-jumbotron a {
+	position: absolute;
+	bottom: 10px;
+	left: 35px;
+	display: block;
+	width: 80px;
+	height: 25px;
+	border: 1px solid #5A0703;
+	border-radius: 5px;
+	background-color: #B50505;
+	color: #Fff;
+	text-align: center;
+	line-height: 25px;
+	font-size: 14px;
+	text-decoration: none;
+}
+.m-item {
+	margin-top: 30px;
+	padding: 0 10px;
+}
+.m-item .sub-item {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+.m-item .pic {
+	border: 1px solid #A2A2A2;
+}
+.m-item .pic a {
+	text-decoration: none;
+}
+.m-item .pic img {
+	width: 100%;
+}
+.m-item .title {
+	color: #747474;
+	line-height: 20px;
+}
+.m-item .price {
+	color: #B90C08;
+	line-height: 20px;
+}

@@ -1,0 +1,13 @@
+
+<link rel="stylesheet" href="./assets/css/trade/rate.css">
+
+<div class="m-content">
+    <form action="{:U('Home/Order/comment')}" method="post" name="myForm">
+        <textarea class="form-control" rows="5" placeholder="欢迎写上您对本产品的评价！" name="content"></textarea>
+        <input type="hidden" name="order_sn" value="{$_GET['order_sn']}" />
+        <div class="control">
+            <a href="javascript:history.back();" class="cancel-btn">返回</a>
+            <a href="javascript:myForm.submit();" class="confirm-btn">提交</a>
+        </div>
+    </form>
+</div>

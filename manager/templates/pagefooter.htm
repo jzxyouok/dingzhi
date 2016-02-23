@@ -1,0 +1,435 @@
+</div></div></div>
+
+{if $smarty.session.admin_id}
+
+<div id="footer">
+
+{$query_info}{$gzip_enabled}{$memory_info}<br />Technical Support <a href="http://www.muhuatech.com/" target="_blank">Muhuatech Co.Ltd</a><br />
+
+</div>
+
+<!-- 新订单提示信息 -->
+
+<div class="warning_box" id="popMsg">
+
+	<a href="javascript:Message.close()" class="close">×</a>
+
+	<p><a href="order.php?act=list">{$lang.new_order_1}<strong id="spanNewOrder">1</strong>{$lang.new_order_2}<strong id="spanNewPaid">0</strong>{$lang.new_order_3}</a></p>
+
+</div>
+
+<!--
+
+<embed src="images/online.wav" width="0" height="0" autostart="false" name="msgBeep" id="msgBeep" enablejavascript="true"/>
+
+-->
+
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0" id="msgBeep" width="1" height="1">
+
+  <param name="movie" value="images/online.swf">
+
+  <param name="quality" value="high">
+
+  <embed src="images/online.swf" name="msgBeep" id="msgBeep" quality="high" width="0" height="0" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?p1_prod_version=shockwaveflash">
+
+  </embed>
+
+</object>
+
+
+
+{insert_scripts files="init.js"}
+
+<script language="JavaScript">
+
+<!--
+
+{if $enable_order_check eq '0'}startCheckOrder = function(){}{/if}
+
+//-->
+
+</script>
+
+
+
+{if $option.send_mail_on eq 'on'}
+
+<div id="send_msg">
+
+	<p>{$lang.email_sending}<a href="javascript:;" onClick="Javascript:switcher()" id="lnkSwitch" class="action">{$lang.pause}</a></p>
+
+</div>
+
+    <script type="text/javascript" charset="gb2312">
+
+    var sm = window.setInterval("start_sendmail()", 5000);
+
+    var finished = 0;
+
+    var error = 0;
+
+    var conti = "{$lang.conti}";
+
+    var pause = "{$lang.pause}";
+
+    var counter = 0;
+
+    var str = "{$lang.str}";
+
+    {literal}
+
+    function start_sendmail()
+
+    {
+
+      Ajax.call('index.php?is_ajax=1&act=send_mail','', start_sendmail_Response, 'GET', 'JSON');
+
+    }
+
+    function start_sendmail_Response(result)
+
+    {
+
+        if (typeof(result.count) == 'undefined')
+
+        {
+
+            result.count = 0;
+
+            result.message = '';
+
+        }
+
+        if (typeof(result.count) != 'undefined' && result.count == 0)
+
+        {
+
+            counter --;
+
+            document.getElementById('lnkSwitch').style.display = "none";
+
+            window.clearInterval(sm);
+
+        }
+
+
+
+        if( typeof(result.goon) != 'undefined' )
+
+        {
+
+            start_sendmail();
+
+        }
+
+
+
+        counter ++ ;
+
+
+
+        document.getElementById('send_msg').innerHTML = result.message;
+
+    }
+
+    function switcher()
+
+    {
+
+        if(document.getElementById('lnkSwitch').innerHTML == conti)
+
+        {
+
+            //do pause
+
+            document.getElementById('lnkSwitch').innerHTML = pause;
+
+            sm = window.setInterval("start_sendmail()", 5000);
+
+        }
+
+        else
+
+        {
+
+            //do continue
+
+            document.getElementById('lnkSwitch').innerHTML = conti;
+
+            document.getElementById('send_msg').innerHTML = sprintf(str, counter);
+
+            window.clearInterval(sm);
+
+        }
+
+    }
+
+
+
+
+
+
+
+    sprintfWrapper = {   
+
+      
+
+      init : function () {   
+
+      
+
+        if (typeof arguments == "undefined") { return null; }   
+
+        if (arguments.length < 1) { return null; }   
+
+        if (typeof arguments[0] != "string") { return null; }   
+
+        if (typeof RegExp == "undefined") { return null; }   
+
+      
+
+        var string = arguments[0];   
+
+        var exp = new RegExp(/(%([%]|(\-)?(\+|\x20)?(0)?(\d+)?(\.(\d)?)?([bcdfosxX])))/g);   
+
+        var matches = new Array();   
+
+        var strings = new Array();   
+
+        var convCount = 0;   
+
+        var stringPosStart = 0;   
+
+        var stringPosEnd = 0;   
+
+        var matchPosEnd = 0;   
+
+        var newString = '';   
+
+        var match = null;   
+
+      
+
+        while (match = exp.exec(string)) {   
+
+          if (match[9]) { convCount += 1; }   
+
+      
+
+          stringPosStart = matchPosEnd;   
+
+          stringPosEnd = exp.lastIndex - match[0].length;   
+
+          strings[strings.length] = string.substring(stringPosStart, stringPosEnd);   
+
+      
+
+          matchPosEnd = exp.lastIndex;   
+
+          matches[matches.length] = {   
+
+            match: match[0],   
+
+            left: match[3] ? true : false,   
+
+            sign: match[4] || '',   
+
+            pad: match[5] || ' ',   
+
+            min: match[6] || 0,   
+
+            precision: match[8],   
+
+            code: match[9] || '%',   
+
+            negative: parseInt(arguments[convCount]) < 0 ? true : false,   
+
+            argument: String(arguments[convCount])   
+
+          };   
+
+        }   
+
+        strings[strings.length] = string.substring(matchPosEnd);   
+
+      
+
+        if (matches.length == 0) { return string; }   
+
+        if ((arguments.length - 1) < convCount) { return null; }   
+
+      
+
+        var code = null;   
+
+        var match = null;   
+
+        var i = null;   
+
+      
+
+        for (i=0; i<matches.length; i++) {   
+
+      
+
+          if (matches[i].code == '%') { substitution = '%' }   
+
+          else if (matches[i].code == 'b') {   
+
+            matches[i].argument = String(Math.abs(parseInt(matches[i].argument)).toString(2));   
+
+            substitution = sprintfWrapper.convert(matches[i], true);   
+
+          }   
+
+          else if (matches[i].code == 'c') {   
+
+            matches[i].argument = String(String.fromCharCode(parseInt(Math.abs(parseInt(matches[i].argument)))));   
+
+            substitution = sprintfWrapper.convert(matches[i], true);   
+
+          }   
+
+          else if (matches[i].code == 'd') {   
+
+            matches[i].argument = String(Math.abs(parseInt(matches[i].argument)));   
+
+            substitution = sprintfWrapper.convert(matches[i]);   
+
+          }   
+
+          else if (matches[i].code == 'f') {   
+
+            matches[i].argument = String(Math.abs(parseFloat(matches[i].argument)).toFixed(matches[i].precision ? matches[i].precision : 6));   
+
+            substitution = sprintfWrapper.convert(matches[i]);   
+
+          }   
+
+          else if (matches[i].code == 'o') {   
+
+            matches[i].argument = String(Math.abs(parseInt(matches[i].argument)).toString(8));   
+
+            substitution = sprintfWrapper.convert(matches[i]);   
+
+          }   
+
+          else if (matches[i].code == 's') {   
+
+            matches[i].argument = matches[i].argument.substring(0, matches[i].precision ? matches[i].precision : matches[i].argument.length)   
+
+            substitution = sprintfWrapper.convert(matches[i], true);   
+
+          }   
+
+          else if (matches[i].code == 'x') {   
+
+            matches[i].argument = String(Math.abs(parseInt(matches[i].argument)).toString(16));   
+
+            substitution = sprintfWrapper.convert(matches[i]);   
+
+          }   
+
+          else if (matches[i].code == 'X') {   
+
+            matches[i].argument = String(Math.abs(parseInt(matches[i].argument)).toString(16));   
+
+            substitution = sprintfWrapper.convert(matches[i]).toUpperCase();   
+
+          }   
+
+          else {   
+
+            substitution = matches[i].match;   
+
+          }   
+
+      
+
+          newString += strings[i];   
+
+          newString += substitution;   
+
+      
+
+        }   
+
+        newString += strings[i];   
+
+      
+
+        return newString;   
+
+      
+
+      },   
+
+      
+
+      convert : function(match, nosign){   
+
+        if (nosign) {   
+
+          match.sign = '';   
+
+        } else {   
+
+          match.sign = match.negative ? '-' : match.sign;   
+
+        }   
+
+        var l = match.min - match.argument.length + 1 - match.sign.length;   
+
+        var pad = new Array(l < 0 ? 0 : l).join(match.pad);   
+
+        if (!match.left) {   
+
+          if (match.pad == "0" || nosign) {   
+
+            return match.sign + pad + match.argument;   
+
+          } else {   
+
+            return pad + match.sign + match.argument;   
+
+          }   
+
+        } else {   
+
+          if (match.pad == "0" || nosign) {   
+
+            return match.sign + match.argument + pad.replace(/0/g, ' ');   
+
+          } else {   
+
+            return match.sign + match.argument + pad;   
+
+          }   
+
+        }   
+
+      }   
+
+    }   
+
+      
+
+    sprintf = sprintfWrapper.init;  
+
+
+
+
+
+
+
+    {/literal}
+
+    </script>
+
+{/if}
+
+{/if}
+
+</body>
+
+</html>

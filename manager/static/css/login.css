@@ -1,0 +1,51 @@
+
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1;}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}li{list-style:none}table{width:100%;line-height:1.5em;border-collapse:collapse;border-spacing:0}
+.clearfix:after, .container:after{content:'\0020';display:block;height:0;clear:both;visibility:hidden;max-height:0;}
+.clearfix, .container{display:inline-block;}
+* html .clearfix, * html .container{height:1%;}
+.clearfix, .container{display:block;}
+.clearer{background:none;border:0;clear:both;display:block;float:none;font-size:0;list-style:none;margin:0;padding:0;overflow:hidden;visibility:hidden;width:0;height:0}
+html{color:#555;font-size:12px;font-family:Helvetica, Arial,sans-serif;text-align:left;background-color:#f3f3f3;}
+strong, th, thead td, h1, h2, h3, h4, h5, h6{font-weight:bold;}
+h1{font-size:1.9em;}h2{font-size:1.7em;}h3{font-size:1.5em;}h4{font-size:1.3em;}h5{font-size:1.2em;}h6{font-size:1em;}
+cite, em, dfn{font-style:normal;}
+a{color:#444;text-decoration:none;outline:none;}
+a:hover{color:#000;text-decoration:underline;}
+hr{background:#ddd;color:#ddd;clear:both;float:none;width:100%;height:.1em;margin:.5em 0;border:none;}
+hr.space{background:#fff;color:#fff;}
+table{border-top:1px solid #ddd;border-left:1px solid #ddd;}
+th, td{padding:5px;border-bottom:1px solid #ddd;border-right:1px solid #ddd;vertical-align:top;}
+th{font-weight:bold;text-align:center;background:#f8f8f8;}
+textarea, input[type='text'], input[type='password'], select{padding:4px;background:#fff url('../img/text_input_bg.gif') repeat-x left top;border-width:1px;border-style:solid;border-color:#ccc;border-radius:3px;}
+textarea:hover, input[type='text']:hover, input[type='password']:hover, select:hover{ border-color: #aaa;}
+textarea:focus, input[type='text']:focus, input[type='password']:focus, select:focus{ border-color: #888;outline:none;}
+input, select{cursor:pointer;}input[type='text'],input[type='password']{cursor:text;}label{cursor:pointer;}
+
+.button, .button:visited, .special, .special:visited, input[type=button], input[type=submit], input[type=reset]{display:inline-block;height:25px;padding:0 10px;line-height:25px;text-align:center;text-decoration:none;background:#eee url('../img/btn_bg.gif') repeat-x 0 0;border:1px solid #bbb;border-radius:27px;vertical-align:middle;text-shadow:0 1px 0 #f8f8f8;}
+.button:hover, .special:hover, input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover{color:#fff;background-color:#333;background-position:0 -30px;border-color:#333;text-shadow:0 1px 0 #000;text-decoration:none;}
+
+.login{width:322px;margin:7em auto;}
+.login h1 a{width:326px;height:50px;overflow:hidden;padding-bottom:15px;display:block;font-size:30px;line-height:50px;text-align:center;}
+
+.login form{margin-left:8px;padding:16px;font-weight:normal;border-radius:11px;background:#fff;border:1px solid #eee;border-bottom-color:#ccc;border-radius:6px;box-shadow:0 3px 15px #ccc;}
+.login form h2{margin-bottom:10px;font-size:16px;text-align:center;}
+.login form p{float:left;width:100%;margin-bottom:12px;}
+.login form label{color:#777;font-size:13px;}
+.login form .input{font-size:24px;width:262px;height:38px;padding:3px 8px;margin:2px 0;vertical-align:middle;}
+.login form .input:focus{border-color:#e59700;outline:#E4BD71 solid 1px;}
+.login form .submit .forgot{float:left;margin-top:7px;}
+.login form .submit .button{float:right;}
+.login form .submit .reset{margin-right:5px;}
+.login form .submit .remember{float:right;margin:4px 10px 0 0;}
+.login form .submit .remember input{vertical-align:middle;}
+
+.login form .captcha span{display:block;}
+.login form .captcha .input{width:118px;}
+.login form .captcha img{width:133px;height:42px;margin:2px 0 2px 7px;border:2px solid #999;vertical-align:middle;}
+
+.message{margin:0 0 16px 8px;border-width:1px;border-style:solid;border-radius:3px;}
+#nav{margin:0 0 0 8px;padding:16px;}
+
+
+#pass-strength-result{font-weight:bold;border-style:solid;border-width:1px;margin:12px 0 6px;padding:6px 5px;text-align:center;}

@@ -1,0 +1,89 @@
+
+<link rel="stylesheet" href="./assets/css/pay/pay.css">
+
+<div class="m-content">
+    <form class="form-horizontal" action="index.php" method="get">
+        <div class="form-group">
+            <div class="col-xs-6">
+                <select class="form-control" onchange="change_pro(this.value)">
+                    <option value="">请选择省份...</option>
+                    <volist name="province_list" id="province">
+                        <option value="{$province['region_id']}">{$province['region_name']}</option>
+                    </volist>
+                </select>
+            </div>
+            <div class="col-xs-6">
+                <select class="form-control" id="city" onchange="change_city(this.value)">
+                    <option value="">请选择城市...</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-6">
+                <select class="form-control" name="agency" id="agency" onchange="change_agency(this.value)">
+                    <option value="">请选择门店...</option>
+                </select>
+            </div>
+            <div class="col-xs-6">
+                <select class="form-control" name="dealer" id="dealer">
+                    <option value="">请选择经销商...</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12">
+                <span class="total-payment">总支付金额：{$order_amount}元</span>
+            </div>
+        </div>
+        <input type="hidden" name="g" value="Home" />
+        <input type="hidden" name="c" value="Order" />
+        <input type="hidden" name="a" value="pay" />
+        <input type="hidden" name="order_sn" value="{$_GET['order_sn']}" />
+        <button class="btn btn-success btn-block" type="submit">微信支付</button>
+    </form>
+</div>
+
+<script>
+    function change_pro(pro_id){
+        $.post("{:U('Home/Ajax/cityList')}", {pro_id:pro_id}, function(data){
+            if (data.error == 0) {
+                var html = template('select_option', {
+                    options: data.data
+                });
+            }
+            html = "<option value=\"\">请选择城市...</option>" + html;
+            $("#city").html(html);
+        });
+    }
+    function change_city(city_id){
+        $.post("{:U('Home/Ajax/agencyList')}", {city_id:city_id}, function(data){
+            if (data.error == 0) {
+                var html = template('select_option', {
+                    options: data.data
+                });
+            }
+            html = "<option value=\"\">请选择门店...</option>" + html;
+            $("#agency").html(html);
+        });
+    }
+    function change_agency(agency_id){
+        $.post("{:U('Home/Ajax/dealerList')}", {agency_id:agency_id}, function(data){
+            if (data.error == 0) {
+                var html = template('select_option', {
+                    options: data.data
+                });
+            }
+            html = "<option value=\"\">请选择经销商...</option>" + html;
+            $("#dealer").html(html);
+        });
+    }
+</script>
+
+<!-- 普通弹窗内容 -->
+<script type="text/html" id="select_option">
+    {{each options as option}}
+    <option value="{{option.val}}">{{option.name}}</option>
+    {{/each}}
+</script>
+
+<script src="./assets/js/arttemplate.js"></script>

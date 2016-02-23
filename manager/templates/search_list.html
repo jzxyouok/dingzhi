@@ -1,0 +1,29 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<form method="post" action="" name="listForm" onsubmit="return confirmSubmit(this)">
+    <!-- start goods list -->
+    <div class="list-div" id="listDiv">
+        <table cellpadding="3" cellspacing="1">
+            <tr>
+                <th>编号</th>
+                <th>关键词</th>
+                <th>操作</th>
+            </tr>
+            {foreach from=$lists item=list}
+            <tr>
+                <td>{$list.id}</td>
+                <td>{$list.keyword}</td>
+                <td align="center">
+                    <a href="search_list.php?act=edit&id={$list.id}" title="编辑"><img src="images/icon_edit.gif" width="16" height="16" border="0" /></a>
+                    <a href="javascript:;" onclick="listTable.remove({$list.id}, '是否删除?')" title="删除"><img src="images/icon_trash.gif" width="16" height="16" border="0" /></a>
+                </td>
+            </tr>
+            {foreachelse}
+            <tr>
+                <td class="no-records" colspan="10">暂无关键词</td>
+            </tr>
+            {/foreach}
+        </table>
+    </div>
+</form>
+{include file="pagefooter.htm"}

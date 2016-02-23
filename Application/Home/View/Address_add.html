@@ -1,0 +1,33 @@
+
+<link rel="stylesheet" href="./assets/css/address/addaddress.css">
+
+<div class="m-content">
+    <form action="{:U('Home/Address/add')}" method="post">
+        <h5>添加收货地址</h5>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="姓名*" name="name">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="电话*" name="phone">
+        </div>
+        <div class="form-group">
+            <select name="pro_id" id="pro_id">
+                <option value="6">广东</option>
+            </select>
+            <!--<input type="text" class="form-control" placeholder="省/州*">-->
+        </div>
+        <div class="form-group">
+            <select name="city_id" id="city_id">
+                <option value="76">广州</option>
+            </select>
+            <!--<input type="text" class="form-control" placeholder="城市*">-->
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="地址*" name="remark">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="邮编*" name="zipcode">
+        </div>
+        <button type="submit" class="btn btn-danger btn-block">确认</button>
+    </form>
+</div>

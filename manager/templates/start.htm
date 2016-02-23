@@ -1,0 +1,265 @@
+<!-- $Id: start.htm 17216 2011-01-19 06:03:12Z liubo $ -->
+{include file="pageheader.htm"}
+<!-- start personal message -->
+{if $admin_msg}
+<div class="list-div" style="border: 1px solid #CC0000">
+  <table cellspacing='1' cellpadding='3'>
+    <tr>
+      <th>{$lang.pm_title}</th>
+      <th>{$lang.pm_username}</th>
+      <th>{$lang.pm_time}</th>
+    </tr>
+    {foreach from=$admin_msg item=msg}
+      <tr align="center">
+        <td align="left"><a href="message.php?act=view&id={$msg.message_id}">{$msg.title|truncate:60:"..."}</a></td>
+        <td>{$msg.user_name}</td>
+        <td>{$msg.send_date}</td>
+      </tr>
+    {/foreach}
+  </table>
+  </div>
+<br />
+{/if}
+<!-- end personal message -->
+<!-- start order statistics -->
+
+<link rel="stylesheet" type="text/css" href="../assets/calendar/calendargraph.css">
+<style type="text/css">
+    #graph {
+        /*width: 800px;*/
+    }
+    .btn {
+        display: inline-block;
+        padding: 0 10px;
+        text-align: center;
+        color: #0099FF;
+        line-height: 25px;
+        text-decoration: none;
+        margin-bottom: 20px;
+    }
+</style>
+<div class="" style="height: 600px;">
+    <div style="width: 79%;float: left;">
+    <h2></h2>
+    <a href="javascript:void(0);" class="btn prev">上个月</a>
+    <a href="javascript:void(0);" class="btn next">下个月</a>
+    <div id="graph">
+
+    </div>
+
+    <script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../assets/calendar/calendargraph.js"></script>
+    <script type="text/javascript">
+        var date = new Date("{$month}");
+        var month = date.getMonth();
+
+        //data这个数组,下标0的对象就是对应当月的1号啦,如此类推
+        var data = JSON.parse('{$order_stats}');
+
+        //使用例子,就下面这一行,其他的可以无视,第一个参数的格式是这样的 2015-11-03 ,大致这样,或者 2015-11-3 这样也行的
+        $("#graph").calGraph(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate(), data);
+        $("h2").html(date.getFullYear() + "-" + (date.getMonth() + 1));
+
+        $(".prev").click(function() {
+            location.href = 'index.php?act=main&month={$prev_month}';
+        });
+
+        $(".next").click(function() {
+            location.href = 'index.php?act=main&month={$next_month}';
+        });
+    </script>
+    </div>
+    <div style="width: 19%;float: right;margin-top: 67px;">
+        <table cellspacing='1' cellpadding='3'>
+            <tr>
+                <th colspan="4" class="group-title">留位表设置</th>
+            </tr>
+            <tr>
+                <td>
+                    <p>每日接单量</p>
+                    <form action="index.php?act=set_max_order" method="post">
+                        <p><input type="text" name="max_order" value="{$max_order_count}" /></p>
+                        <p><input type="submit" value="提交" /></p>
+                    </form>
+                    <br />说明：每次修改订单量为当天生效，不影响之前日子订单量。
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="list-div">
+<table cellspacing='1' cellpadding='3'>
+  <tr>
+    <th colspan="4" class="group-title">{$lang.order_stat}</th>
+  </tr>
+  <tr>
+    <td width="20%"><a href="order.php?act=list&composite_status={$status.await_ship}">{$lang.await_ship}</a></td>
+    <td width="30%"><strong style="color: red">{$order.await_ship}</strong></td>
+    <td width="20%"><a href="order.php?act=list&composite_status={$status.unconfirmed}">{$lang.unconfirmed}</a></td>
+    <td width="30%"><strong>{$order.unconfirmed}</strong></td>
+  </tr>
+  <tr>
+    <td><a href="order.php?act=list&composite_status={$status.await_pay}">{$lang.await_pay}</a></td>
+    <td><strong>{$order.await_pay}</strong></td>
+    <td><a href="order.php?act=list&composite_status={$status.finished}">{$lang.finished}</a></td>
+    <td><strong>{$order.finished}</strong></td>
+  </tr>
+  <tr>
+    <td><a href="goods_booking.php?act=list_all">{$lang.new_booking}</a></td>
+    <td><strong>{$booking_goods}</strong></td>
+    <!--<td><a href="user_account.php?act=list&process_type=1&is_paid=0">{$lang.new_reimburse}</a></td>
+    <td><strong>{$new_repay}</strong>/td>-->
+      <td><a href="order.php?act=list&composite_status={$status.shipped_part}">{$lang.shipped_part}</a></td>
+      <td><strong>{$order.shipped_part}</strong></td>
+  </tr>
+  <!--<tr>
+    <td><a href="order.php?act=list&composite_status={$status.shipped_part}">{$lang.shipped_part}</a></td>
+    <td><strong>{$order.shipped_part}</strong></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>-->
+</table>
+</div>
+<!-- end order statistics -->
+<br />
+<!-- start goods statistics -->
+<div class="list-div">
+<table cellspacing='1' cellpadding='3'>
+  <tr>
+    <th colspan="4" class="group-title">{$lang.goods_stat}</th>
+  </tr>
+  <tr>
+    <td width="20%">{$lang.goods_count}</td>
+    <td width="30%"><strong>{$goods.total}</strong></td>
+    <td width="20%"><a href="goods.php?act=list&stock_warning=1">{$lang.warn_goods}</a></td>
+    <td width="30%"><strong style="color: red">{$goods.warn}</strong></td>
+  </tr>
+  <tr>
+    <td><a href="goods.php?act=list&amp;intro_type=is_new">{$lang.new_goods}</a></td>
+    <td><strong>{$goods.new}</strong></td>
+    <td><a href="goods.php?act=list&amp;intro_type=is_best">{$lang.recommed_goods}</a></td>
+    <td><strong>{$goods.best}</strong></td>
+  </tr>
+  <tr>
+    <td><a href="goods.php?act=list&amp;intro_type=is_hot">{$lang.hot_goods}</a></td>
+    <td><strong>{$goods.hot}</strong></td>
+    <td><a href="goods.php?act=list&amp;intro_type=is_promote">{$lang.sales_count}</a></td>
+    <td><strong>{$goods.promote}</strong></td>
+  </tr>
+</table>
+</div>
+<br />
+<!-- Virtual Card -->
+<!--<div class="list-div">
+<table cellspacing='1' cellpadding='3'>
+  <tr>
+    <th colspan="4" class="group-title">{$lang.virtual_card_stat}</th>
+  </tr>
+  <tr>
+    <td width="20%">{$lang.goods_count}</td>
+    <td width="30%"><strong>{$virtual_card.total}</strong></td>
+    <td width="20%"><a href="goods.php?act=list&amp;stock_warning=1&amp;extension_code=virtual_card">{$lang.warn_goods}</a></td>
+    <td width="30%"><strong style="color: red">{$virtual_card.warn}</strong></td>
+  </tr>
+  <tr>
+    <td><a href="goods.php?act=list&amp;intro_type=is_new&amp;extension_code=virtual_card">{$lang.new_goods}</a></td>
+    <td><strong>{$virtual_card.new}</strong></td>
+    <td><a href="goods.php?act=list&amp;intro_type=is_best&amp;extension_code=virtual_card">{$lang.recommed_goods}</a></td>
+    <td><strong>{$virtual_card.best}</strong></td>
+  </tr>
+  <tr>
+    <td><a href="goods.php?act=list&amp;intro_type=is_hot&amp;extension_code=virtual_card">{$lang.hot_goods}</a></td>
+    <td><strong>{$virtual_card.hot}</strong></td>
+    <td><a href="goods.php?act=list&amp;intro_type=is_promote&amp;extension_code=virtual_card">{$lang.sales_count}</a></td>
+    <td><strong>{$virtual_card.promote}</strong></td>
+  </tr>
+</table>
+</div>-->
+<!-- end order statistics -->
+<br />
+<!-- start access statistics -->
+<div class="list-div">
+<table cellspacing='1' cellpadding='3'>
+  <tr>
+    <th colspan="4" class="group-title">{$lang.acess_stat}</th>
+  </tr>
+  <tr>
+    <td width="20%">{$lang.acess_today}</td>
+    <td width="30%"><strong>{$today_visit}</strong></td>
+    <td width="20%">{$lang.online_users}</td>
+    <td width="30%"><strong>{$online_users}</strong></td>
+  </tr>
+  <!--<tr>
+    <td><a href="user_msg.php?act=list_all">{$lang.new_feedback}</a></td>
+    <td><strong>{$feedback_number}</strong></td>
+    <td><a href="comment_manage.php?act=list">{$lang.new_comments}</a></td>
+    <td><strong>{$comment_number}</strong></td>
+  </tr>-->
+</table>
+</div>
+<!-- end access statistics -->
+<br />
+<!-- start system information -->
+<div class="list-div">
+<table cellspacing='1' cellpadding='3'>
+  <tr>
+    <th colspan="4" class="group-title">{$lang.system_info}</th>
+  </tr>
+  <tr>
+    <td width="20%">{$lang.os}</td>
+    <td width="30%">{$sys_info.os} ({$sys_info.ip})</td>
+    <td width="20%">{$lang.web_server}</td>
+    <td width="30%">{$sys_info.web_server}</td>
+  </tr>
+  <tr>
+    <td>{$lang.php_version}</td>
+    <td>{$sys_info.php_ver}</td>
+    <td>{$lang.mysql_version}</td>
+    <td>{$sys_info.mysql_ver}</td>
+  </tr>
+  <tr>
+    <td>{$lang.safe_mode}</td>
+    <td>{$sys_info.safe_mode}</td>
+    <td>{$lang.safe_mode_gid}</td>
+    <td>{$sys_info.safe_mode_gid}</td>
+  </tr>
+  <tr>
+    <td>{$lang.socket}</td>
+    <td>{$sys_info.socket}</td>
+    <td>{$lang.timezone}</td>
+    <td>{$sys_info.timezone}</td>
+  </tr>
+  <tr>
+    <td>{$lang.gd_version}</td>
+    <td>{$sys_info.gd}</td>
+    <td>{$lang.zlib}</td>
+    <td>{$sys_info.zlib}</td>
+  </tr>
+  <tr>
+    <td>{$lang.ip_version}</td>
+    <td>{$sys_info.ip_version}</td>
+    <td>{$lang.max_filesize}</td>
+    <td>{$sys_info.max_filesize}</td>
+  </tr>
+  <tr>
+    <td>{$lang.ec_charset}</td>
+    <td>{$ecs_charset}</td>
+    <td>木花微商城版本:</td>
+    <td> v2.91</td>
+  </tr>
+</table>
+</div>
+{literal}
+{insert_scripts files="../js/utils.js"}
+<script type="Text/Javascript" language="JavaScript">
+<!--
+onload = function()
+{
+  /* 检查订单 */
+  startCheckOrder();
+}
+//-->
+</script>
+{/literal}
+{include file="pagefooter.htm"}

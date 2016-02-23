@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<title>{if $ur_here}{$ur_here} - {/if}{$lang.cp_home}</title>
+
+<meta name="robots" content="noindex, nofollow">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link href="static/css/main.css" rel="stylesheet" type="text/css" />
+
+<link type="image/x-icon" href="static/img/favicon.png" rel="shortcut icon" />
+
+{insert_scripts files="../js/transport.js,common.js,../js/utils.js"}
+
+<script language="JavaScript">
+
+<!--
+
+// 这里把JS用到的所有语言都赋值到这里
+
+{foreach from=$lang.js_languages key=key item=item}
+
+var {$key} = "{$item}";
+
+{/foreach}
+
+//-->
+
+</script>
+
+</head>
+
+<body>
+
+{if $smarty.session.admin_id}
+
+<div id="header"><div class="container">
+
+	<div id="logo"><a href="index.php?act=main" title="{$lang.admin_home}">{$option.shop_name|truncate:16}<em>{$lang.admin_panel}</em></a></div>
+
+	<div id="top_nav">
+
+		<a href="javascript:modalDialog('index.php?act=calculator', 'calculator', 340, 250)" class="calc">{$lang.calculator}</a>
+
+		<a href="javascript:showTodoList({$smarty.session.admin_id})" class="todo">{$lang.todolist}</a>
+
+		<!--<a href="message.php?act=list" class="message">{$lang.view_message}</a>-->
+
+		<!--<a href="http://help.ecshop.com/" class="help">{$lang.help}</a>-->
+
+		<a href="index.php?act=clear_cache" class="cache">{$lang.clear_cache}</a>
+
+		<a href="../" target="_blank" class="view_front">{$lang.preview}</a>
+
+		<a href="privilege.php?act=modif">{$smarty.session.admin_name|truncate:10}</a>
+
+		<a href="privilege.php?act=logout" class="signout">{$lang.signout}</a>
+
+	</div>
+
+</div></div>
+
+<div id="nav"><div class="container">
+
+	<ul class="level_1">
+
+		<li class="level_1 home"><p class="level_1"><a href="index.php?act=main" class="level_1" title="{$lang.admin_home}">{$lang.admin_home}</a></p></li>
+
+	{foreach from=$main_menu item=menu key=k}
+
+		<li class="level_1" onmouseover="this.className='hover level_1'" onmouseout="this.className='level_1'">
+
+			<p class="level_1">{if $menu.action}<a href="{$menu.action}">{$menu.label}</a>{else}<em>{$menu.label}</em>{/if}</p>
+
+			{if $menu.children}
+
+			<ul class="level_2">
+
+				{foreach from=$menu.children item=child}
+
+				<li class="level_2"><a href="{$child.action}" class="level_2">{$child.label}</a></li>
+
+				{/foreach}
+
+			</ul>
+
+			{/if}
+
+		</li>
+
+	{/foreach}
+
+	</ul>
+
+	
+
+	<ul class="level_1 self_nav">
+
+		<li class="level_1">
+
+			<p class="level_1"><em>{$lang.self_nav}</em></p>
+
+			<ul class="level_2">
+
+				<li class="level_2"><a href="privilege.php?act=modif" class="level_2">{$lang.edit_self_nav}</a></li>
+
+				{foreach from=$nav_list item=item key=key}
+
+				<li class="level_2"><a href="{$key}" class="level_2">{$item}</a></li>
+
+				{/foreach}
+
+
+			</ul>
+
+		</li>
+
+	</ul>
+
+</div></div>
+
+{/if}
+
+<div id="content"><div class="container"><div class="content_wrapper">
+
+	<div class="main_title_wrapper clearfix">
+
+		<h1 id="search_id">{if $ur_here}{$ur_here}{else}{$lang.admin_panel}{/if}</h1>
+
+		<p class="action">
+
+			{if $action_link}<a href="{$action_link.href}" class="button">{$action_link.text}</a>{/if}
+
+			{if $action_link2}<a href="{$action_link2.href}" class="button">{$action_link2.text}</a>{/if}
+
+		</p>
+
+	</div>
+

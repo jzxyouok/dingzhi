@@ -1,0 +1,89 @@
+
+<link rel="stylesheet" href="./assets/css/pay/confirm.css">
+
+<div class="m-content">
+    <div class="confirm-info">
+        <div class="address">
+            <div class="select">
+                <div class="pull-left">送货地址</div>
+                <div class="pull-right">
+                    <a href="{:U('Home/Address/index')}" class="btn btn-default select-addr-btn">选择已有收货地址</a>
+                </div>
+            </div>
+            <div class="detail">
+                <div class="location">{$address_data.address}</div>
+                <div class="userinfo">
+                    <span>{$address_data.name}</span>
+                    <span>{$address_data.phone}</span>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <table>
+                <thead>
+                <tr>
+                    <td>商品</td>
+                    <td>数量</td>
+                    <td>价格</td>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="cart_data" id="vo">
+                <tr>
+                    <td>{$vo.goods_name}</td>
+                    <td>{$vo.goods_number}</td>
+                    <td>{$vo.goods_price}元</td>
+                </tr>
+                </volist>
+                </tbody>
+            </table>
+        </div>
+        <div class="payment">
+            <div class="postfee">
+                <div class="pull-left">运费</div>
+                <div class="pull-right">免费</div>
+            </div>
+            <div class="total-payment">
+                <div class="pull-left">总价</div>
+                <div class="pull-right">{$total_money}元</div>
+            </div>
+        </div>
+        <div class="arrival">
+            预计到达时间：{$arrival_time}
+        </div>
+        <div class="invoice">
+            <label>
+                <input type="checkbox">
+                是否需要发票
+            </label>
+            <div class="invoice-input">
+                <input type="text" class="form-control" id="invoice" name="invoice" placeholder="发票抬头">
+            </div>
+        </div>
+    </div>
+
+    <a href="javascript:insertOrder();" class="btn btn-success btn-block pay-btn">继续支付</a>
+</div>
+
+<script>
+    $(function(){
+        $(".invoice label input").change(function(){
+            if($(this).is(":checked")){
+                $(this).closest(".invoice").find(".invoice-input").show();
+            }else{
+                $(this).closest(".invoice").find(".invoice-input").hide();
+            }
+        });
+    });
+    function insertOrder() {
+        $.post("{:U('Home/Order/insert','',true,true)}", {
+            invoice:$("#invoice").val()
+        }, function(data){
+            if (data.error == 0) {
+                location.href = data.data.redirect;
+            } else {
+                alert(data.msg);
+            }
+        });
+    }
+</script>

@@ -1,0 +1,77 @@
+.m-content .headinfo {
+	padding: 10px 20px;
+	font-weight: bold;
+}
+.m-content .headinfo table {
+	width: 100%;
+}
+.m-content .headinfo td {
+	line-height: 30px;
+}
+
+.m-content .list {
+	padding: 10px 10px 0;
+	font-weight: bold;
+}
+.m-content .list ul {
+	margin: 0;
+	padding: 15px 0;
+	list-style: none;
+	border-top: 1px solid #ccc;
+}
+.m-content .list li .pull-left,
+.m-content .list li .pull-right {
+	height: 40px;
+}
+.m-content .list li {
+	height: 40px;
+	line-height: 40px;
+}
+.m-content .list li input {
+	width: 70px;
+	height: 30px;
+	vertical-align: middle;
+	margin-right: 8px;
+	line-height: 30px;
+	text-align: right;
+}
+.m-content .list li a {
+	display: inline-block;
+	height: 25px;
+	text-align: center;
+	line-height: 25px;
+	background-color: #C2C2C2;
+	color: #333;
+	border-radius: 5px;
+	padding: 0 7px;
+	margin-left: 5px;
+	font-weight: normal;
+	text-decoration: none;
+}
+.m-content .control {
+	height: 40px;
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+}
+.m-content .control a {
+	display: block;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	box-flex: 1;
+	border-color: #6B6B6B;
+	border-radius: 0;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	padding: 0;
+	text-decoration: none;
+}
+.m-content .control .back-btn {
+	background-color: #A6A6A6;
+	color: #fff;
+}
+.m-content .control .continue-btn {
+	background-color: #2BAF2B;
+	color: #fff;
+}

@@ -1,0 +1,111 @@
+
+<link rel="stylesheet" href="./assets/css/size/addsize.css">
+
+<div class="m-content">
+    <div class="headinfo">
+        <table>
+            <tbody>
+            <tr>
+                <td>名称：{$data.name}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>身高 {$data.height}cm</td>
+                <td>体重 {$data.weight}kg</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <form name="myForm" action="<if condition="ACTION_NAME eq 'add'">{:U('Home/Size/insert')}<else/>{:U('Home/Size/update')}</if>" method="post">
+    <div class="list">
+        <ul>
+            <li>
+                <div class="pull-left">
+                    1.颈围
+                </div>
+                <div class="pull-right">
+                    <input type="text" name="jingwei" value="{$data.jingwei}">cm
+                    <a href="#">测量方法</a>
+                </div>
+            </li>
+            <li>
+                <div class="pull-left">
+                    2.胸围
+                </div>
+                <div class="pull-right">
+                    <input type="text" name="xiongwei" value="{$data.xiongwei}">cm
+                    <a href="#">测量方法</a>
+                </div>
+            </li>
+            <li>
+                <div class="pull-left">
+                    3.腰围
+                </div>
+                <div class="pull-right">
+                    <input type="text" name="yaowei" value="{$data.yaowei}">cm
+                    <a href="#">测量方法</a>
+                </div>
+            </li>
+            <li>
+                <div class="pull-left">
+                    4.臀围
+                </div>
+                <div class="pull-right">
+                    <input type="text" name="tunwei" value="{$data.tunwei}">cm
+                    <a href="#">测量方法</a>
+                </div>
+            </li>
+            <li>
+                <div class="pull-left">
+                    5.肩宽
+                </div>
+                <div class="pull-right">
+                    <input type="text" name="jiankuan" value="{$data.jiankuan}">cm
+                    <a href="#">测量方法</a>
+                </div>
+            </li>
+            <li>
+                <div class="pull-left">
+                    6.衣长
+                </div>
+                <div class="pull-right">
+                    <input type="text" name="yichang" value="{$data.yichang}">cm
+                    <a href="#">测量方法</a>
+                </div>
+            </li>
+            <li>
+                <div class="pull-left">
+                    7.袖长
+                </div>
+                <div class="pull-right">
+                    <input type="text" name="xiuchang" value="{$data.xiuchang}">cm
+                    <a href="#">测量方法</a>
+                </div>
+            </li>
+            <li>
+                <div class="pull-left">
+                    8.臂围
+                </div>
+                <div class="pull-right">
+                    <input type="text" name="biwei" value="{$data.biwei}">cm
+                    <a href="#">测量方法</a>
+                </div>
+            </li>
+            <li>
+                <div class="pull-left">
+                    9.腕围
+                </div>
+                <div class="pull-right">
+                    <input type="text" name="wanwei" value="{$data.wanwei}">cm
+                    <a href="#">测量方法</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <input type="hidden" name="size_id" value="{$data.size_id}" />
+    </form>
+    <div class="control">
+        <a href="javascript:history.back();" class="btn btn-default back-btn">返回</a>
+        <a href="javascript:myForm.submit();" class="btn btn-default continue-btn">继续</a>
+    </div>
+</div>

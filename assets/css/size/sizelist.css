@@ -1,0 +1,49 @@
+.m-content .control {
+	padding: 20px;
+}
+.m-content .add-btn {
+	border-radius: 7px;
+	background-color: #2BAF2B;
+}
+.m-content .list {
+	padding: 0 20px;
+}
+.m-content .list .sub-size {
+	margin-bottom: 30px;
+}
+.m-content .list table {
+	width: 100%;
+	text-align: center;
+	color: #333;
+}
+.m-content .list thead td {
+	background-color: #E0E0E0;
+	line-height: 25px;
+}
+.m-content .list tbody td {
+	line-height: 40px;
+}
+.m-content .list tbody .glyphicon {
+	font-size: 14px;
+	color: #2BAF2B;
+}
+.m-content .list .sub-size:not(.select) .glyphicon-ok-circle {
+	color: #999;
+	width: 14px;
+	height: 14px;
+	display: inline-block;
+	border-radius: 7px;
+	border: 1px solid #666;
+}
+.m-content .list .sub-size:not(.select) .glyphicon-ok-circle:before {
+	content: "";
+}
+.m-content .list .sub-size-control {
+	border-top: 1px solid #ccc;
+	text-align: right;
+	padding-top: 5px;
+}
+.m-content .list .sub-size-control .btn {
+	padding: 3px 20px;
+	border-radius: 7px;
+}
